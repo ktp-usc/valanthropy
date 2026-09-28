@@ -1,0 +1,93 @@
+export default function Home() {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-black flex items-center justify-center">
+      {/* subtle animated background layer */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 bg-anim" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 bg-anim-noise" />
+      <svg className="relative z-10 w-64 h-auto" version="1.1" viewBox="0.0 0.0 960.0 720.0" fill="none" stroke="none" strokeLinecap="square" strokeMiterlimit="10" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><clipPath id="p.0"><path d="m0 0l960.0 0l0 720.0l-960.0 0l0 -720.0z" clipRule="nonzero"/></clipPath><g clipPath="url(#p.0)"><path fill="#000000" fillOpacity="0.0" d="m0 0l960.0 0l0 720.0l-960.0 0z" fillRule="evenodd"/><path fill="#000000" fillOpacity="0.0" d="m5.1968503 107.90551l949.6063 0l0 504.18896l-949.6063 0z" fillRule="evenodd"/><path fill="#ffffff" d="m180.00002 354.03052l97.656235 97.0625q24.03125 24.03125 41.015625 32.71875q17.0 8.6875 33.984375 9.859375l0 7.234375l-125.968735 0l0 -7.234375q11.328125 0 16.296875 -3.796875q4.984375 -3.8125 4.984375 -8.5q0 -4.6875 -1.859375 -8.390625q-1.84375 -3.71875 -12.203125 -13.875l-91.40625 -90.4375l0 85.359375q0 20.109375 2.546875 26.5625q1.953125 4.875 8.203125 8.390625q8.390625 4.6875 17.765625 4.6875l8.984375 0l0 7.234375l-112.890625 0l0 -7.234375l9.375 0q16.40625 0 23.828125 -9.5625q4.6875 -6.25 4.6875 -30.078125l0 -171.09375q0 -20.125 -2.53125 -26.765625q-1.953125 -4.6875 -8.015625 -8.203125q-8.59375 -4.6875 -17.96875 -4.6875l-9.375 0l0 -7.21875l112.890625 0l0 7.21875l-8.984375 0q-9.171875 0 -17.765625 4.5q-6.0625 3.125 -8.40625 9.375q-2.34375 6.25 -2.34375 25.78125l0 81.046875q3.90625 -3.703125 26.765625 -24.796875q58.0 -53.125 70.109375 -70.90625q5.28125 -7.8125 5.28125 -13.671875q0 -4.484375 -4.109375 -7.90625q-4.09375 -3.421875 -13.859375 -3.421875l-6.0625 0l0 -7.21875l97.26561 0l0 7.21875q-8.59375 0.203125 -15.625 2.359375q-7.03125 2.140625 -17.1875 8.296875q-10.15625 6.140625 -25.0 19.8125q-4.2968597 3.90625 -39.64061 40.046875l-40.4375 40.234375zm288.875 -124.03125q48.625 0 87.875 37.609375q39.265625 37.59375 39.265625 99.5q0 61.53125 -38.671875 100.703125q-38.671875 39.15625 -91.59375 39.15625q-58.796875 0 -93.953125 -41.21875q-35.15625 -41.21875 -35.15625 -98.25q0 -61.71875 39.546875 -99.609375q39.5625 -37.890625 92.6875 -37.890625zm-3.71875 14.265625q-37.890625 0 -60.84375 31.34375q-22.9375 31.34375 -22.9375 91.109375q0 55.859375 21.484375 91.125q21.484375 35.25 62.5 35.25q39.84375 0 62.890625 -30.953125q23.046875 -30.96875 23.046875 -89.953125q0 -59.765625 -21.59375 -93.84375q-21.578125 -34.078125 -64.546875 -34.078125zm-45.890625 76.953125l7.421875 0q0 16.796875 6.828125 24.03125q6.84375 7.21875 25.203125 7.21875l15.8125 0q17.390625 0 24.421875 -7.125q7.03125 -7.140625 7.03125 -24.125l7.421875 0l0 94.328125l-7.421875 0q0 -16.59375 -6.84375 -23.8125q-6.828125 -7.234375 -25.0 -7.234375l-16.203125 0q-17.390625 0 -24.328125 7.234375q-6.921875 7.21875 -6.921875 23.8125l-7.421875 0l0 -94.328125zm397.2578 -70.703125l-122.84375 0l0 202.14062q0 26.171875 6.734375 33.203125q6.734375 7.03125 31.546875 7.8125l0 7.234375l-114.0625 0l0 -7.234375q24.609375 -0.78125 31.4375 -7.8125q6.84375 -7.03125 6.84375 -33.203125l0 -168.35938q0 -26.171875 -6.84375 -33.203125q-6.828125 -7.03125 -31.4375 -7.8125l0 -7.21875l274.40625 0l0 7.21875q-24.609375 0.78125 -31.453125 7.8125q-6.828125 7.03125 -6.828125 33.203125l0 168.35938q0 26.171875 6.828125 33.203125q6.84375 7.03125 31.453125 7.8125l0 7.234375l-113.859375 0l0 -7.234375q24.40625 -0.78125 31.234375 -7.703125q6.84375 -6.9375 6.84375 -33.3125l0 -202.14062z" fillRule="nonzero"/></g></svg>
+      <style>{`
+        .bg-anim {
+          background:
+            /* stronger steady base glow */
+            radial-gradient(900px 600px at 50% 55%, rgba(255, 255, 255, 0.12), transparent 68%),
+            /* animated layers (more noticeable) */
+            radial-gradient(1100px 700px at 15% 25%, rgba(255, 255, 255, 0.18), transparent 62%),
+            radial-gradient(900px 650px at 85% 30%, rgba(255, 255, 255, 0.15), transparent 62%),
+            radial-gradient(900px 700px at 50% 85%, rgba(255, 255, 255, 0.14), transparent 64%);
+          /* oversize the layers so motion never "leaves" the viewport */
+          background-size: 100% 100%, 170% 170%, 185% 185%, 175% 175%;
+          background-position: 50% 55%, 30% 30%, 70% 30%, 50% 70%;
+          filter: blur(18px);
+          opacity: 0.95;
+          animation: bg-pan 12s ease-in-out infinite;
+          will-change: background-position, background-size, opacity;
+        }
+
+        .bg-anim-noise {
+          /* a touch of moving grain so you can perceive motion on black */
+          background-image: repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 2px,
+            transparent 6px
+          );
+          background-size: 180px 180px;
+          background-position: 0 0;
+          opacity: 0.06;
+          mix-blend-mode: overlay;
+          animation: noise-pan 4.25s linear infinite;
+          will-change: background-position;
+        }
+
+        @keyframes bg-pan {
+          0% {
+            /* base glow stays centered; other blobs start offset */
+            background-position: 50% 55%, 22% 28%, 78% 32%, 52% 76%;
+            background-size: 100% 100%, 170% 170%, 185% 185%, 175% 175%;
+            opacity: 0.92;
+          }
+          25% {
+            background-position: 50% 55%, 40% 18%, 66% 46%, 70% 64%;
+            background-size: 100% 100%, 178% 178%, 192% 192%, 182% 182%;
+            opacity: 0.98;
+          }
+          50% {
+            background-position: 50% 55%, 60% 52%, 44% 58%, 36% 44%;
+            background-size: 100% 100%, 188% 188%, 200% 200%, 190% 190%;
+            opacity: 1.0;
+          }
+          75% {
+            background-position: 50% 55%, 34% 62%, 72% 40%, 44% 86%;
+            background-size: 100% 100%, 180% 180%, 194% 194%, 184% 184%;
+            opacity: 0.98;
+          }
+          100% {
+            background-position: 50% 55%, 22% 28%, 78% 32%, 52% 76%;
+            background-size: 100% 100%, 170% 170%, 185% 185%, 175% 175%;
+            opacity: 0.92;
+          }
+        }
+
+        @keyframes noise-pan {
+          0% {
+            background-position: 0 0;
+          }
+          50% {
+            background-position: -90px 120px;
+          }
+          100% {
+            background-position: -180px 180px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .bg-anim,
+          .bg-anim-noise {
+            animation: none;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
