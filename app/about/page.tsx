@@ -16,6 +16,13 @@ const values = [
         desc: "A path toward long-term stability, not short-term relief.",
     },
 ];
+const section_fonts = "bg-slate-900 px-8 py-16 text-white md:px-16"
+const division_fonts = "mx-auto max-w-5xl"
+const navigation_fonts = "mb-4 text-[10px] uppercase tracking-wide text-red-500"
+const h1_fonts = "mb-4 text-4xl font-bold leading-tight"
+const description_fonts = "mb-4 text-4xl font-bold leading-tight"
+const link_fonts = "inline-block rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
+const white_background = "bg-white px-8 py-14 md:px-16"
 
 export default function About() {
     return (
@@ -23,19 +30,19 @@ export default function About() {
             <Header active="/about" />
 
             {/* Hero */}
-            <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
-                <div className="mx-auto max-w-5xl">
-                    <p className="mb-4 text-[10px] uppercase tracking-wide text-red-500">
+            <section className={section_fonts}>
+                <div className={division_fonts}>
+                    <p className={navigation_fonts}>
                         About Us | South Carolina
                     </p>
-                    <h1 className="mb-4 text-4xl font-bold leading-tight">About VAlanthropy</h1>
-                    <p className="mb-6 max-w-md text-sm">
+                    <h1 className={h1_fonts}>About VAlanthropy</h1>
+                    <p className={description_fonts}>
                         Building hope, one home at a time. We help veterans build stability,
                         independence, and a stronger future.
                     </p>
                     <Link
                         href="/about-leadership"
-                        className="inline-block rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
+                        className={link_fonts}
                     >
                         Meet Our Leadership
                     </Link>
@@ -43,7 +50,7 @@ export default function About() {
             </section>
 
             {/* Mission */}
-            <section className="bg-white px-8 py-14 md:px-16">
+            <section className={white_background}>
                 <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
                     <div>
                         <h2 className="mb-3 text-2xl font-bold">Our mission</h2>
