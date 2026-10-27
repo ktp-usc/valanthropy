@@ -122,3 +122,8 @@
     @apply bg-background text-foreground;
     }
 }
+
+body {
+    background: #fcfaf5;
+    color: #123d31;
+}

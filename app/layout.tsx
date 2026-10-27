@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
+import Header from "@/components/header";
 import "./globals.css";
-import React from "react";
 
 export const metadata: Metadata = {
-    title: "Future KTP Web App",
-    description: "KTP SP26"
+    title: "VAlanthropy",
+    description: "Turning compassion into lasting change."
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+    children
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
         <html lang="en">
-        <body>
-        { children }
-        </body>
+            <body>
+                <Header />
+                {children}
+            </body>
         </html>
     );
 }
