@@ -334,7 +334,7 @@ export default function Financials() {
                     </a>{" "}
                     or{" "}
                     <a href="tel:+18337258388" className="text-red-700 hover:underline">
-                        1-833-725-8388
+                        1-833 SALUTEU [725-8388]
                     </a>
                     .
                 </p>
