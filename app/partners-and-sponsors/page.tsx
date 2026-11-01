@@ -80,13 +80,13 @@ function SponsorLogo({ org }: { org: Organization }) {
 export default function PartnersAndSponsors() {
     return (
         <div className="bg-white text-slate-900">
-            <Header active="/ways-to-help" />
+            <Header active="/about" />
 
             {/* Hero */}
             <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
                     <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">
-                        Ways to Help
+                        About Us
                     </p>
                     <h1 className="mb-4 text-4xl font-bold leading-tight">Partners & Sponsors</h1>
                     <p className="mb-6 max-w-md text-sm">

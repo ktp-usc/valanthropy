@@ -31,7 +31,7 @@ export default async function StartAConversation({
 
     return (
         <div className="bg-white text-slate-900">
-            <Header active="/ways-to-help" />
+            <Header active="/about" />
 
             {/* Hero */}
             <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
