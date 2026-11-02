@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Header from "@/components/header";
 
 export default function Home() {
     return (
         <main>
+            <Header />
             <section className="bg-[#123d31] px-6 py-24 text-white">
                 <div className="mx-auto max-w-7xl">
                     <p className="mb-4 text-sm font-semibold tracking-[0.2em] text-[#e8c982]">
