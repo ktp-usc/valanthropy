@@ -9,6 +9,49 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
     return (
         <main className="mx-auto max-w-6xl bg-white font-sans text-[#0b2133]">
+
+            {/* Navigation bar */}
+            <header className="flex flex-wrap items-center justify-between gap-6 px-6 py-5 md:px-16">
+                <div>
+                    <p className="text-2xl font-bold">VAlanthropy</p>
+                    <p className="text-[10px] font-semibold uppercase text-[#195581]">
+                        Building hope. One home at a time.
+                    </p>
+                </div>
+
+                <nav
+                    aria-label="Main navigation"
+                    className="flex flex-wrap items-center gap-5 text-sm md:gap-8"
+                >
+                    <button type="button" className="hover:text-[#195581]">
+                        About
+                    </button>
+
+                    <button
+                        type="button"
+                        aria-current="page"
+                        className="font-semibold text-[#195581]"
+                    >
+                        Projects
+                    </button>
+
+                    <button type="button" className="hover:text-[#195581]">
+                        Ways to Help
+                    </button>
+
+                    <button type="button" className="hover:text-[#195581]">
+                        Contact
+                    </button>
+
+                    <button
+                        type="button"
+                        className="rounded-md bg-[#c8202c] px-8 py-3 font-semibold text-white hover:bg-[#a91924]"
+                    >
+                        Donate Today
+                    </button>
+                </nav>
+            </header>
+
             {/* Flagship project */}
             <section
                 aria-labelledby="project-title"
@@ -211,6 +254,12 @@ export default function ProjectsPage() {
                     Your donation, sponsorship, or shared connection helps move the
                     village forward.
                 </p>
+                <button
+                    type="button"
+                    className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-[#c8202c] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a91924] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c8202c]"
+                >
+                    Help Build the Village
+                </button>
             </section>
         </main>
     );
