@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowDown,
   ArrowRight,
@@ -46,7 +47,7 @@ const GIVING_OPTIONS: GivingOption[] = [
     title: "Donor-advised giving through NCF",
     description:
       "Explore donor-advised funds and giving options through the National Christian Foundation.",
-    href: donationLinks.ncf,
+    href: "/donate/ncf",
     label: "Explore NCF giving",
     icon: HeartHandshake,
   },
@@ -369,15 +370,25 @@ export default function DonatePage() {
                     <p className="mt-3 flex-1 text-sm leading-6 text-white">
                       {option.description}
                     </p>
-                    <a
-                      className={`mt-5 inline-flex items-center gap-2 self-start ${LINK_DARK}`}
-                      href={option.href}
-                      rel={option.href.startsWith("https://") ? "noreferrer" : undefined}
-                      target={option.href.startsWith("https://") ? "_blank" : undefined}
-                    >
-                      {option.label}
-                      <ArrowRight aria-hidden="true" size={16} />
-                    </a>
+                    {option.href === "/donate/ncf" ? (
+                      <Link
+                        className={`mt-5 inline-flex items-center gap-2 self-start ${LINK_DARK}`}
+                        href={option.href}
+                      >
+                        {option.label}
+                        <ArrowRight aria-hidden="true" size={16} />
+                      </Link>
+                    ) : (
+                      <a
+                        className={`mt-5 inline-flex items-center gap-2 self-start ${LINK_DARK}`}
+                        href={option.href}
+                        rel={option.href.startsWith("https://") ? "noreferrer" : undefined}
+                        target={option.href.startsWith("https://") ? "_blank" : undefined}
+                      >
+                        {option.label}
+                        <ArrowRight aria-hidden="true" size={16} />
+                      </a>
+                    )}
                   </li>
                 );
               })}
@@ -397,8 +408,11 @@ export default function DonatePage() {
                 <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
                   VAlanthropy’s website invites donors to explore donor-advised
                   funds and giving options through the National Christian
-                  Foundation. Contact the team for the current giving link and
-                  instructions, or{" "}
+                  Foundation.{" "}
+                  <Link className={LINK_LIGHT} href="/donate/ncf">
+                    Read the NCF giving instructions
+                  </Link>
+                  , or{" "}
                   <a
                     className={LINK_LIGHT}
                     href={donationLinks.ncf}
