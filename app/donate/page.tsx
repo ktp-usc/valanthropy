@@ -23,7 +23,6 @@ const donationLinks = {
     "https://valanthropy.networkforgood.com/projects/297702-legacy-brick-campaign",
   sponsorship:
     "https://valanthropy.dm.networkforgood.com/forms/become-a-sponsor",
-  ncf: "https://www.ncfgiving.com/advisor-solutions",
 };
 
 export const metadata: Metadata = {
@@ -115,15 +114,11 @@ const BUTTON_ON_DARK =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 const BUTTON_SECONDARY =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded border border-white/30 px-8 py-3 text-xs font-semibold text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
-const LINK_LIGHT =
-  "font-semibold text-red-700 underline underline-offset-4 hover:text-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700";
 const LINK_DARK =
   "font-semibold text-red-400 underline underline-offset-4 hover:text-red-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 const IMAGE_WRAPPER =
   "relative aspect-video overflow-hidden rounded bg-slate-200";
 const IMAGE = "object-cover";
-const DETAILS_SUMMARY =
-  "cursor-pointer py-5 font-semibold text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-700";
 
 export default function DonatePage() {
   return (
@@ -396,108 +391,6 @@ export default function DonatePage() {
           </div>
         </section>
 
-        {/* Giving details */}
-        <section className={SECTION_LIGHT}>
-          <div className={CONTAINER}>
-            <h2 className={SECTION_TITLE}>Giving details and questions</h2>
-            <div className="divide-y divide-slate-200 border-y border-slate-200">
-              <details className="scroll-mt-6" id="ncf">
-                <summary className={DETAILS_SUMMARY}>
-                  Donor-advised giving through NCF
-                </summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  VAlanthropy’s website invites donors to explore donor-advised
-                  funds and giving options through the National Christian
-                  Foundation.{" "}
-                  <Link className={LINK_LIGHT} href="/donate/ncf">
-                    Read the NCF giving instructions
-                  </Link>
-                  , or{" "}
-                  <a
-                    className={LINK_LIGHT}
-                    href={donationLinks.ncf}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    explore NCF advisor solutions
-                  </a>
-                  .
-                </p>
-              </details>
-              <details className="scroll-mt-6" id="legacy-brick">
-                <summary className={DETAILS_SUMMARY}>
-                  Legacy brick campaign
-                </summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  The legacy brick campaign offers a way to honor a veteran,
-                  loved one, family, business, or organization.{" "}
-                  <a
-                    className={LINK_LIGHT}
-                    href={donationLinks.legacyBrick}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Visit the legacy brick campaign
-                  </a>
-                  .
-                </p>
-              </details>
-              <details className="scroll-mt-6" id="sponsorship">
-                <summary className={DETAILS_SUMMARY}>Sponsorship</summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  Sponsorship opportunities may include a room, apartment,
-                  furnishing need, event, or project area. Contact the team to
-                  explore what is currently available, or{" "}
-                  <a
-                    className={LINK_LIGHT}
-                    href={donationLinks.sponsorship}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    view the sponsor form
-                  </a>
-                  .
-                </p>
-              </details>
-              <details className="scroll-mt-6" id="major-gifts">
-                <summary className={DETAILS_SUMMARY}>Major gifts</summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  Contact VAlanthropy to discuss a major gift and the giving
-                  approach that best fits your goals.
-                </p>
-              </details>
-              <details className="scroll-mt-6" id="stock-transfers">
-                <summary className={DETAILS_SUMMARY}>Stock transfers</summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  Stock transfer instructions have not been confirmed on the
-                  information available for this page. Contact the team before
-                  initiating a transfer.
-                </p>
-              </details>
-              <details className="scroll-mt-6" id="other-giving">
-                <summary className={DETAILS_SUMMARY}>
-                  Other ways to give or get involved
-                </summary>
-                <p className={`max-w-3xl pb-5 ${BODY_LIGHT}`}>
-                  The website also welcomes questions about one-time or monthly
-                  gifts, legacy giving, corporate support, partnerships,
-                  volunteer support, and other ways to help move the project
-                  forward.
-                </p>
-              </details>
-            </div>
-            <p className={`mt-6 ${BODY_LIGHT}`}>
-              Need personalized assistance?{" "}
-              <a
-                className={LINK_LIGHT}
-                href="mailto:lilly@valanthropy.org?subject=Donor%20Giving%20Assistance"
-              >
-                Email the VAlanthropy team
-              </a>
-              .
-            </p>
-          </div>
-        </section>
       </main>
 
       <Footer />
