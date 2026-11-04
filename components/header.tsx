@@ -14,6 +14,8 @@ const links: NavItem[] = [
         children: [
             { href: "/about", label: "About Us" },
             { href: "/about-leadership", label: "Leadership & Current Board" },
+            { href: "/partners-and-sponsors", label: "Partners & Sponsors" },
+            { href: "/financials", label: "Financial & Transparency" },
         ],
     },
     {

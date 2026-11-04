@@ -114,6 +114,21 @@
     --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Auto-scrolling logo strip: the list is rendered twice, so -50% loops seamlessly */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+    animation: marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee { overflow-x: auto; }
+    .marquee-track { animation: none; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
