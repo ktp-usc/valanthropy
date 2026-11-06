@@ -45,9 +45,15 @@ const links: NavItem[] = [
     },
 ];
 
-export default function Header({ active }: { active?: string }) {
+export default function Header({
+    active,
+    donateHref = "/donate",
+}: {
+    active?: string;
+    donateHref?: string;
+}) {
     return (
-        <header className="relative z-30 flex items-center justify-between bg-white px-8 py-3">
+        <header className="relative z-30 flex flex-wrap items-center justify-between gap-2 bg-white px-4 py-3 md:flex-nowrap md:gap-4 md:px-8">
             <Link href="/" className="flex items-center">
                 <Image
                     src="/about-leadership/valanthropy-lgo.png"
@@ -55,17 +61,17 @@ export default function Header({ active }: { active?: string }) {
                     width={707}
                     height={194}
                     priority
-                    className="h-12 w-auto"
+                    className="h-8 w-auto md:h-12"
                 />
             </Link>
-            <nav className="flex items-center gap-10 text-sm font-bold">
+            <nav aria-label="Main navigation" className="order-3 flex w-full items-center justify-center gap-3 text-xs font-bold sm:gap-5 sm:text-sm md:order-none md:w-auto md:gap-6">
                 {links.map((l) => (
                     <div key={l.label} className="group relative">
                         <Link
                             href={l.href}
-                            className={`block py-3 ${
-                                l.href === active ? "text-blue-800" : "text-slate-900"
-                            } hover:text-blue-800`}
+                            className={`block py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 ${
+                                l.href === active ? "text-red-700" : "text-slate-900"
+                            } hover:text-red-700`}
                         >
                             {l.label}
                         </Link>
@@ -75,7 +81,7 @@ export default function Header({ active }: { active?: string }) {
                                     <li key={c.label}>
                                         <Link
                                             href={c.href}
-                                            className="block whitespace-nowrap px-4 py-2 text-xs font-semibold text-slate-900 hover:bg-slate-100 hover:text-blue-800"
+                                            className="block whitespace-nowrap px-4 py-2 text-xs font-semibold text-slate-900 hover:bg-slate-100 hover:text-red-700 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-red-700"
                                         >
                                             {c.label}
                                         </Link>
@@ -87,8 +93,8 @@ export default function Header({ active }: { active?: string }) {
                 ))}
             </nav>
             <Link
-                href="/donate"
-                className="rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
+                href={donateHref}
+                className="ml-auto rounded bg-red-700 px-4 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 md:ml-0 md:px-8"
             >
                 Donate Today
             </Link>
