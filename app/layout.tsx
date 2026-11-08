@@ -4,11 +4,15 @@ import React from "react";
 import Footer from "../components/footer";
 
 export const metadata: Metadata = {
-    title: "Future KTP Web App",
-    description: "KTP SP26"
+    title: "VAlanthropy",
+    description: "Turning compassion into lasting change."
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+    children
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
         <html lang="en">
         <body>
