@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 // Add an `href` (e.g. "/financials/form-990-2025.pdf" in /public) once a document is approved for release.
 type Doc = { label: string; href?: string };
@@ -339,7 +338,6 @@ export default function Financials() {
                     .
                 </p>
             </section>
-            <Footer />
         </div>
     );
 }

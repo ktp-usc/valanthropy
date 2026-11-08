@@ -12,7 +12,7 @@ const quickLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
-    { href: "/progress", label: "Progress" },
+    { href: "/news", label: "News" },
     { href: "/ways-to-help", label: "Ways to Help" },
     { href: "/contact", label: "Contact" },
 ];
@@ -94,41 +94,16 @@ export default function Footer() {
 
                         {/* Enable these buttons when destinations are available. */}
                         <ul className="mt-5 space-y-3 text-sm text-slate-300">
-                            <li>
-                                <button type="button" disabled>
-                                    Home
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    About
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    Projects
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    Progress
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    Ways to Help
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    Contact
-                                </button>
-                            </li>
+                            {quickLinks.map((link) => (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
@@ -206,10 +181,10 @@ export default function Footer() {
                                 </a>
 
                                 <a
-                                    href="tel:+18337258338"
+                                    href="tel:+18337258388"
                                     className="block hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
-                                    1-833-725-8338
+                                    1-833 SALUTEU [725-8388]
                                 </a>
                             </div>
                         </address>

@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 type Organization = {
     name: string;
     // Logo in /public, e.g. "/partners-and-sponsors/acme.png"
@@ -197,7 +195,6 @@ export default function PartnersAndSponsors() {
                     Contact Us
                 </Link>
             </section>
-            <Footer />
         </div>
     );
 }

@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 const EMAIL = "info@valanthropy.org";
 
 const mailto = (subject: string) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -240,7 +238,6 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     );
 }
