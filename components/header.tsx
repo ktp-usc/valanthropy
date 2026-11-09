@@ -65,7 +65,7 @@ export default function Header({
                 />
             </Link>
             <nav aria-label="Main navigation" className="order-3 flex w-full items-center justify-center gap-3 text-xs font-bold sm:gap-5 sm:text-sm md:order-none md:w-auto md:gap-6">
-                {links.map((l) => (
+                {links.map((l, index) => (
                     <div key={l.label} className="group relative">
                         <Link
                             href={l.href}
@@ -75,7 +75,15 @@ export default function Header({
                         >
                             {l.label}
                         </Link>
-                        <div className="invisible absolute left-1/2 top-full min-w-48 -translate-x-1/2 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                        <div
+                            className={`invisible absolute top-full min-w-48 max-w-[calc(100vw-2rem)] opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 ${
+                                index === 0
+                                    ? "left-0 md:left-1/2 md:-translate-x-1/2"
+                                    : index === links.length - 1
+                                      ? "right-0 md:right-auto md:left-1/2 md:-translate-x-1/2"
+                                      : "left-1/2 -translate-x-1/2"
+                            }`}
+                        >
                             <ul className="rounded border border-slate-200 bg-white py-2 shadow-lg">
                                 {l.children.map((c) => (
                                     <li key={c.label}>
