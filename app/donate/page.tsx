@@ -23,6 +23,8 @@ const donationLinks = {
     "https://valanthropy.networkforgood.com/projects/297702-legacy-brick-campaign",
   sponsorship:
     "https://valanthropy.dm.networkforgood.com/forms/become-a-sponsor",
+  villageBuilder:
+    "https://valanthropy.networkforgood.com/projects/304047-village-builder-challenge",
 };
 
 export const metadata: Metadata = {
@@ -70,11 +72,11 @@ const GIVING_OPTIONS: GivingOption[] = [
   },
   {
     number: "04",
-    title: "Major gifts",
+    title: "Village Builder Challenge",
     description:
-      "Talk with the team about a significant contribution and the giving approach that works for you.",
-    href: "#major-gifts",
-    label: "Discuss a major gift",
+      "Help build Hidden Wounds Village Alpha through the Village Builder Challenge.",
+    href: donationLinks.villageBuilder,
+    label: "Support the Village Builder Challenge",
     icon: HeartHandshake,
   },
   {
@@ -82,8 +84,8 @@ const GIVING_OPTIONS: GivingOption[] = [
     title: "Stock transfers",
     description:
       "Ask the team whether a stock contribution is an option and request verified transfer instructions.",
-    href: "#stock-transfers",
-    label: "Ask about stock giving",
+    href: "mailto:lilly@valanthropy.org?subject=Stock%20Transfer%20Giving",
+    label: "Email about stock giving",
     icon: ArrowUpRight,
   },
   {
@@ -91,31 +93,34 @@ const GIVING_OPTIONS: GivingOption[] = [
     title: "Other ways to help",
     description:
       "Reach out about one-time or monthly giving, legacy giving, corporate support, partnerships, or another way to get involved.",
-    href: "#other-giving",
-    label: "Find your giving path",
+    href: "mailto:lilly@valanthropy.org?subject=Other%20Ways%20to%20Help",
+    label: "Email about other ways to help",
     icon: ArrowRight,
   },
 ];
 
 const PAGE = "min-h-screen bg-white font-sans text-slate-900";
-const SECTION_HERO = "bg-slate-900 px-8 py-16 text-white md:px-16";
-const SECTION_LIGHT = "bg-white px-8 py-14 md:px-16";
-const SECTION_DARK = "bg-blue-900 px-8 py-14 text-white md:px-16";
+const SECTION_HERO =
+  "bg-slate-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-16";
+const SECTION_LIGHT =
+  "bg-white px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14";
+const SECTION_DARK =
+  "bg-blue-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-14";
 const CONTAINER = "mx-auto max-w-5xl";
 const EYEBROW_LIGHT = "mb-4 text-[16px] uppercase tracking-wide text-red-700";
 const EYEBROW_DARK = "mb-4 text-[16px] uppercase tracking-wide text-red-400";
-const PAGE_TITLE = "text-4xl font-bold";
-const SECTION_TITLE = "mb-6 text-2xl font-bold";
+const PAGE_TITLE = "text-3xl leading-tight font-bold sm:text-4xl";
+const SECTION_TITLE = "mb-5 text-xl leading-snug font-bold sm:mb-6 sm:text-2xl";
 const BODY_LIGHT = "text-sm leading-6 text-slate-600";
 const BODY_DARK = "text-sm leading-6 text-white";
 const BUTTON_PRIMARY =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900";
+  "inline-flex min-h-11 w-full max-w-full items-center justify-center gap-2 rounded bg-red-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:w-auto sm:px-8 sm:text-xs";
 const BUTTON_ON_DARK =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "inline-flex min-h-11 w-full max-w-full items-center justify-center gap-2 rounded bg-red-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:px-8 sm:text-xs";
 const BUTTON_SECONDARY =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded border border-white/30 px-8 py-3 text-xs font-semibold text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "inline-flex min-h-11 w-full max-w-full items-center justify-center gap-2 rounded border border-white/30 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto sm:px-8 sm:text-xs";
 const LINK_DARK =
-  "font-semibold text-red-400 underline underline-offset-4 hover:text-red-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "break-words font-semibold text-red-400 underline underline-offset-4 hover:text-red-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 const IMAGE_WRAPPER =
   "relative aspect-video overflow-hidden rounded bg-slate-200";
 const IMAGE = "object-cover";
@@ -136,9 +141,9 @@ export default function DonatePage() {
         {/* Hero */}
         <section className={SECTION_HERO}>
           <div
-            className={`${CONTAINER} grid items-center gap-8 lg:grid-cols-2`}
+            className={`${CONTAINER} grid min-w-0 items-center gap-8 lg:grid-cols-2`}
           >
-            <div>
+            <div className="min-w-0">
               <p className={EYEBROW_DARK}>Give with purpose</p>
               <h1 className={PAGE_TITLE}>
                 Help build a place where veterans can rebuild.
@@ -170,14 +175,14 @@ export default function DonatePage() {
               </p>
             </div>
 
-            <figure className="overflow-hidden rounded border border-white/30">
+            <figure className="min-w-0 overflow-hidden rounded border border-white/30">
               <div className={IMAGE_WRAPPER}>
                 <Image
                   alt="Rendering of the planned Hidden Wounds Village Alpha homes"
                   className={IMAGE}
                   fill
                   priority
-                  sizes="(min-width: 1024px) 50vw, calc(100vw - 4rem)"
+                  sizes="(min-width: 1024px) 50vw, (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2rem)"
                   src={villageHouseImage}
                 />
               </div>
@@ -201,7 +206,7 @@ export default function DonatePage() {
           id="donation-contact"
         >
           <div
-            className={`${CONTAINER} grid items-center gap-8 md:grid-cols-[1fr_auto]`}
+            className={`${CONTAINER} grid min-w-0 items-center gap-6 md:grid-cols-[1fr_auto] md:gap-8`}
           >
             <div>
               <p className={EYEBROW_LIGHT}>Start a conversation</p>
@@ -226,8 +231,8 @@ export default function DonatePage() {
 
         {/* Impact */}
         <section aria-labelledby="impact-heading" className={SECTION_DARK}>
-          <div className={`${CONTAINER} grid gap-8 md:grid-cols-2`}>
-            <div>
+          <div className={`${CONTAINER} grid min-w-0 gap-8 md:grid-cols-2`}>
+            <div className="min-w-0">
               <p className={EYEBROW_DARK}>Why your support matters</p>
               <h2 className={SECTION_TITLE} id="impact-heading">
                 Housing is the foundation for stability.
@@ -244,7 +249,7 @@ export default function DonatePage() {
                 community reintegration.
               </p>
               <a
-                className={`mt-6 inline-flex items-center gap-2 ${LINK_DARK}`}
+                className={`mt-6 inline-flex max-w-full flex-wrap items-center gap-2 ${LINK_DARK}`}
                 href={donationLinks.general}
                 rel="noreferrer"
                 target="_blank"
@@ -254,7 +259,7 @@ export default function DonatePage() {
               </a>
             </div>
 
-            <div className="rounded border border-white/30 p-4">
+            <div className="min-w-0 rounded border border-white/30 p-4">
               <h3 className="text-sm font-semibold">What support helps advance</h3>
               <ul className="mt-5 space-y-4">
                 {[
@@ -267,7 +272,7 @@ export default function DonatePage() {
                       aria-hidden="true"
                       className="mt-2 size-2 shrink-0 rounded-full bg-red-400"
                     />
-                    <span>{item}</span>
+                    <span className="break-words">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -307,13 +312,13 @@ export default function DonatePage() {
                 </li>
               ))}
             </ul>
-            <figure className="mt-8 overflow-hidden rounded border border-slate-200">
+            <figure className="mt-8 min-w-0 overflow-hidden rounded border border-slate-200">
               <div className={IMAGE_WRAPPER}>
                 <Image
                   alt="Community event at Hidden Wounds Village Alpha"
                   className={IMAGE}
                   fill
-                  sizes="(min-width: 1024px) 1024px, 100vw"
+                  sizes="(min-width: 1024px) 1024px, calc(100vw - 2rem)"
                   src={villageImage}
                 />
               </div>
@@ -350,7 +355,7 @@ export default function DonatePage() {
 
                 return (
                   <li
-                    className="flex flex-col rounded border border-white/30 p-4 transition hover:bg-white/10"
+                    className="flex min-w-0 flex-col rounded border border-white/30 p-4 transition hover:bg-white/10"
                     key={option.number}
                   >
                     <div className="flex items-center justify-between">
@@ -359,15 +364,15 @@ export default function DonatePage() {
                       </span>
                       <Icon aria-hidden="true" className="text-red-400" size={20} />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold">
+                    <h3 className="mt-4 break-words text-sm font-semibold">
                       {option.title}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-6 text-white">
+                    <p className="mt-3 flex-1 break-words text-sm leading-6 text-white">
                       {option.description}
                     </p>
                     {option.href === "/donate/ncf" ? (
                       <Link
-                        className={`mt-5 inline-flex items-center gap-2 self-start ${LINK_DARK}`}
+                        className={`mt-5 inline-flex max-w-full min-w-0 flex-wrap items-center gap-2 self-start ${LINK_DARK}`}
                         href={option.href}
                       >
                         {option.label}
@@ -375,7 +380,7 @@ export default function DonatePage() {
                       </Link>
                     ) : (
                       <a
-                        className={`mt-5 inline-flex items-center gap-2 self-start ${LINK_DARK}`}
+                        className={`mt-5 inline-flex max-w-full min-w-0 flex-wrap items-center gap-2 self-start ${LINK_DARK}`}
                         href={option.href}
                         rel={option.href.startsWith("https://") ? "noreferrer" : undefined}
                         target={option.href.startsWith("https://") ? "_blank" : undefined}

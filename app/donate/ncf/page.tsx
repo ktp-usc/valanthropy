@@ -11,19 +11,23 @@ export const metadata: Metadata = {
 };
 
 const PAGE = "min-h-screen bg-white font-sans text-slate-900";
-const SECTION_HERO = "bg-slate-900 px-8 py-16 text-white md:px-16";
-const SECTION_LIGHT = "bg-white px-8 py-14 md:px-16";
+const SECTION_HERO =
+  "bg-slate-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-16";
+const SECTION_LIGHT =
+  "bg-white px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14";
+const SECTION_DARK =
+  "bg-blue-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-14";
 const CONTAINER = "mx-auto max-w-5xl";
 const EYEBROW = "mb-4 text-[16px] uppercase tracking-wide text-red-400";
-const PAGE_TITLE = "text-4xl font-bold";
-const SECTION_TITLE = "mb-6 text-2xl font-bold";
+const PAGE_TITLE = "text-3xl leading-tight font-bold sm:text-4xl";
+const SECTION_TITLE = "mb-5 text-xl leading-snug font-bold sm:mb-6 sm:text-2xl";
 const BODY = "text-sm leading-6 text-slate-600";
 const LINK =
-  "font-semibold text-red-700 underline underline-offset-4 hover:text-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700";
+  "break-words font-semibold text-red-700 underline underline-offset-4 hover:text-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700";
 const BUTTON_PRIMARY =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900";
+  "inline-flex min-h-11 w-full max-w-full items-center justify-center gap-2 rounded bg-red-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:w-auto sm:px-8 sm:text-xs";
 const CARD =
-  "rounded border border-slate-200 bg-white p-5 transition hover:shadow-lg sm:p-6";
+  "min-w-0 rounded border border-slate-200 bg-white p-4 transition hover:shadow-lg sm:p-6";
 
 const instructions = [
   "Log in to your NCF Giving Fund.",
@@ -47,7 +51,7 @@ export default function NcfGivingPage() {
       <main id="main-content">
         {/* Hero */}
         <section className={SECTION_HERO}>
-          <div className={CONTAINER}>
+          <div className={`${CONTAINER} min-w-0`}>
             <p className={EYEBROW}>Donor-advised giving</p>
             <h1 className={PAGE_TITLE}>Give Through NCF</h1>
             <p className="mt-5 max-w-3xl text-sm leading-6 text-white">
@@ -73,7 +77,7 @@ export default function NcfGivingPage() {
           aria-labelledby="instructions-heading"
           className={SECTION_LIGHT}
         >
-          <div className={CONTAINER}>
+          <div className={`${CONTAINER} min-w-0`}>
             <h2 className={SECTION_TITLE} id="instructions-heading">
               Recommend a grant from your NCF fund
             </h2>
@@ -96,22 +100,22 @@ export default function NcfGivingPage() {
         {/* Recipient information */}
         <section
           aria-labelledby="recipient-heading"
-          className="bg-blue-900 px-8 py-14 text-white md:px-16"
+          className={SECTION_DARK}
         >
           <div className={CONTAINER}>
             <h2 className={SECTION_TITLE} id="recipient-heading">
               VAlanthropy recipient information
             </h2>
             <dl className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded border border-white/30 p-4">
+              <div className="min-w-0 rounded border border-white/30 p-4">
                 <dt className="text-sm text-red-400">Organization</dt>
                 <dd className="mt-1 font-semibold">VAlanthropy</dd>
               </div>
-              <div className="rounded border border-white/30 p-4">
+              <div className="min-w-0 rounded border border-white/30 p-4">
                 <dt className="text-sm text-red-400">EIN</dt>
                 <dd className="mt-1 font-semibold">88-0840494</dd>
               </div>
-              <div className="rounded border border-white/30 p-4 sm:col-span-3">
+              <div className="min-w-0 rounded border border-white/30 p-4 sm:col-span-3">
                 <dt className="text-sm text-red-400">Mailing address</dt>
                 <dd className="mt-1 font-semibold">
                   P.O. Box 5230, Columbia, SC 29250
@@ -123,15 +127,15 @@ export default function NcfGivingPage() {
 
         {/* More information and assistance */}
         <section className={SECTION_LIGHT}>
-          <div className={`${CONTAINER} grid gap-8 md:grid-cols-2`}>
-            <div>
+          <div className={`${CONTAINER} grid min-w-0 gap-8 md:grid-cols-2`}>
+            <div className="min-w-0">
               <h2 className={SECTION_TITLE}>New to NCF?</h2>
               <p className={BODY}>
                 Learn more about NCF Giving Funds and how to open a fund on
                 NCF’s website.
               </p>
               <a
-                className={`mt-4 inline-flex items-center gap-2 ${LINK}`}
+                className={`mt-4 inline-flex max-w-full flex-wrap items-center gap-2 ${LINK}`}
                 href="https://www.ncfgiving.com/giving-fund"
                 rel="noreferrer"
                 target="_blank"
@@ -140,11 +144,14 @@ export default function NcfGivingPage() {
                 <ArrowUpRight aria-hidden="true" size={16} />
               </a>
             </div>
-            <div>
+            <div className="min-w-0">
               <h2 className={SECTION_TITLE}>Need assistance?</h2>
               <p className={BODY}>
                 Contact Richard at{" "}
-                <a className={LINK} href="mailto:Richard@valanthropy.org">
+                <a
+                  className={`${LINK} [overflow-wrap:anywhere]`}
+                  href="mailto:Richard@valanthropy.org"
+                >
                   Richard@valanthropy.org
                 </a>{" "}
                 if you have questions about recommending a grant to VAlanthropy.
@@ -156,7 +163,7 @@ export default function NcfGivingPage() {
           </div>
           <div className={`${CONTAINER} mt-8 border-t border-slate-200 pt-6`}>
             <Link
-              className={`inline-flex items-center gap-2 ${LINK}`}
+              className={`inline-flex max-w-full flex-wrap items-center gap-2 ${LINK}`}
               href="/donate"
             >
               <ArrowLeft aria-hidden="true" size={16} />
