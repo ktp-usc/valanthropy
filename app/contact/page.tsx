@@ -29,7 +29,7 @@ const options = [
 ];
 
 const optionButtonClass =
-    "inline-block rounded bg-red-700 px-14 py-5 text-base font-semibold text-white";
+    "inline-flex min-h-11 w-full max-w-full items-center justify-center rounded bg-red-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 sm:px-8 md:w-auto md:px-14 md:py-5 md:text-base";
 
 export default function Contact() {
     return (
@@ -37,10 +37,10 @@ export default function Contact() {
             <Header active="/contact" />
 
             {/* Hero */}
-            <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
+            <section className="bg-slate-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-16">
                 <div className="mx-auto max-w-5xl">
                     <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">Contact</p>
-                    <h1 className="mb-4 text-4xl font-bold leading-tight">
+                    <h1 className="mb-4 text-3xl font-bold leading-tight sm:text-4xl">
                         Contact VAlanthropy Today
                     </h1>
                     <p className="max-w-md text-sm">
@@ -51,7 +51,7 @@ export default function Contact() {
             </section>
 
             {/* Contact options */}
-            <section className="bg-white px-4 py-14 md:px-8">
+            <section className="bg-white px-4 py-10 sm:px-8 sm:py-12 md:py-14">
                 <div className="mx-auto max-w-7xl">
                     <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
                     <p className="mb-6 text-sm text-slate-600">
@@ -61,23 +61,23 @@ export default function Contact() {
                         {options.map((o) => (
                             <li
                                 key={o.title}
-                                className="flex flex-col gap-4 rounded border border-slate-200 p-6 md:flex-row md:items-center md:justify-between md:gap-8"
+                                className="flex min-w-0 flex-col gap-4 rounded border border-slate-200 p-4 sm:p-6 md:flex-row md:items-center md:justify-between md:gap-8"
                             >
-                                <div className="max-w-2xl">
+                                <div className="min-w-0 max-w-2xl">
                                     <h3 className="mb-2 text-lg font-bold">{o.title}</h3>
                                     <p className="text-sm text-slate-600">{o.desc}</p>
                                 </div>
                                 {o.href.startsWith("/") ? (
                                     <Link
                                         href={o.href}
-                                        className={`${optionButtonClass} shrink-0 self-start text-center md:self-auto`}
+                                        className={`${optionButtonClass} self-start md:shrink-0 md:self-auto`}
                                     >
                                         {o.cta}
                                     </Link>
                                 ) : (
                                     <a
                                         href={o.href}
-                                        className={`${optionButtonClass} shrink-0 self-start text-center md:self-auto`}
+                                        className={`${optionButtonClass} self-start md:shrink-0 md:self-auto`}
                                     >
                                         {o.cta}
                                     </a>
@@ -89,39 +89,39 @@ export default function Contact() {
             </section>
 
             {/* Contact information */}
-            <section className="bg-slate-100 px-8 py-14 md:px-16">
+            <section className="bg-slate-100 px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700">
                         VAlanthropy
                     </h2>
                     <h3 className="mb-6 text-2xl font-bold">Contact Information</h3>
-                    <div className="grid gap-4 md:grid-cols-2">
-                        <div className="rounded border border-slate-200 bg-white p-5 text-sm">
+                    <div className="grid min-w-0 gap-4 md:grid-cols-2">
+                        <div className="min-w-0 rounded border border-slate-200 bg-white p-4 text-sm sm:p-5">
                             <h4 className="mb-2 font-bold">Mailing Address</h4>
                             <p>VAlanthropy</p>
                             <p>P.O. Box 5230</p>
                             <p>Columbia, SC 29250</p>
                         </div>
-                        <div className="rounded border border-slate-200 bg-white p-5 text-sm">
+                        <div className="min-w-0 rounded border border-slate-200 bg-white p-4 text-sm sm:p-5">
                             <h4 className="mb-2 font-bold">Project Address</h4>
                             <p>VAlanthropy&rsquo;s Hidden Wounds Village Alpha</p>
                             <p>22 S. Washington St.</p>
                             <p>Sumter, SC 29150</p>
                         </div>
-                        <div className="rounded border border-slate-200 bg-white p-5 text-sm">
+                        <div className="min-w-0 rounded border border-slate-200 bg-white p-4 text-sm sm:p-5">
                             <h4 className="mb-2 font-bold">Phone</h4>
                             <a
                                 href="tel:+18337258388"
-                                className="font-semibold text-blue-900 hover:underline"
+                                className="font-semibold text-blue-900 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
                             >
                                 1-833 SALUTEU [725-8388]
                             </a>
                         </div>
-                        <div className="rounded border border-slate-200 bg-white p-5 text-sm">
+                        <div className="min-w-0 rounded border border-slate-200 bg-white p-4 text-sm sm:p-5">
                             <h4 className="mb-2 font-bold">Email</h4>
                             <a
                                 href={`mailto:${EMAIL}`}
-                                className="font-semibold text-blue-900 hover:underline"
+                                className="break-all font-semibold text-blue-900 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
                             >
                                 {EMAIL}
                             </a>
@@ -140,8 +140,8 @@ export default function Contact() {
             </section>
 
             {/* Veteran support partner */}
-            <section className="bg-white px-8 py-14 md:px-16">
-                <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+            <section className="bg-white px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
+                <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2 md:gap-10">
                     <div>
                         <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700">
                             Veteran Support Partner
@@ -154,7 +154,7 @@ export default function Contact() {
                             resident support.
                         </p>
                     </div>
-                    <div className="space-y-4 self-start rounded border border-slate-200 p-6 text-sm">
+                    <div className="min-w-0 space-y-4 self-start rounded border border-slate-200 p-4 text-sm sm:p-6">
                         <div>
                             <p className="text-xs uppercase tracking-wide text-slate-500">Address</p>
                             <p>Hidden Wounds Resource Center</p>
@@ -165,7 +165,7 @@ export default function Contact() {
                             <p className="text-xs uppercase tracking-wide text-slate-500">Phone</p>
                             <a
                                 href="tel:+18036604357"
-                                className="font-semibold text-blue-900 hover:underline"
+                                className="break-all font-semibold text-blue-900 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
                             >
                                 (803) 660-HELP
                             </a>
@@ -184,7 +184,7 @@ export default function Contact() {
             </section>
 
             {/* Crisis line */}
-            <section className="bg-blue-900 px-8 py-14 text-white md:px-16">
+            <section className="bg-blue-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-4 text-2xl font-bold">If You Are a Veteran in Crisis</h2>
                     <p className="mb-3 max-w-2xl text-sm font-bold text-red-400">
@@ -203,7 +203,7 @@ export default function Contact() {
                                 href="https://www.veteranscrisisline.net"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline"
+                                className="break-words underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                             >
                                 Veterans Crisis Line
                             </a>
@@ -223,7 +223,7 @@ export default function Contact() {
             </section>
 
             {/* Privacy & response notice */}
-            <section className="bg-slate-100 px-8 py-14 md:px-16">
+            <section className="bg-slate-100 px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-4 text-2xl font-bold text-red-700">
                         Privacy & Response Notice
