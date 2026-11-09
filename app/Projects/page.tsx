@@ -11,7 +11,7 @@ export default function ProjectsPage() {
         <main className="mx-auto max-w-6xl bg-white font-sans text-[#0b2133]">
 
             {/* Navigation bar */}
-            <header className="flex flex-wrap items-center justify-between gap-6 px-6 py-5 md:px-16">
+            <header className="flex flex-col gap-5 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between md:px-16">
                 <div>
                     <p className="text-2xl font-bold">VAlanthropy</p>
                     <p className="text-[10px] font-semibold uppercase text-[#195581]">
@@ -21,31 +21,31 @@ export default function ProjectsPage() {
 
                 <nav
                     aria-label="Main navigation"
-                    className="flex flex-wrap items-center gap-5 text-sm md:gap-8"
+                    className="grid w-full grid-cols-2 items-center gap-3 text-sm sm:flex sm:flex-wrap sm:gap-5 lg:w-auto lg:gap-8"
                 >
-                    <button type="button" className="hover:text-[#195581]">
+                    <button type="button" className="min-h-11 px-2 py-2 text-left hover:text-[#195581]">
                         About
                     </button>
 
                     <button
                         type="button"
                         aria-current="page"
-                        className="font-semibold text-[#195581]"
+                        className="min-h-11 px-2 py-2 text-left font-semibold text-[#195581]"
                     >
                         Projects
                     </button>
 
-                    <button type="button" className="hover:text-[#195581]">
+                    <button type="button" className="min-h-11 px-2 py-2 text-left hover:text-[#195581]">
                         Ways to Help
                     </button>
 
-                    <button type="button" className="hover:text-[#195581]">
+                    <button type="button" className="min-h-11 px-2 py-2 text-left hover:text-[#195581]">
                         Contact
                     </button>
 
                     <button
                         type="button"
-                        className="rounded-md bg-[#c8202c] px-8 py-3 font-semibold text-white hover:bg-[#a91924]"
+                        className="col-span-2 min-h-11 w-full rounded-md bg-[#c8202c] px-8 py-3 font-semibold text-white hover:bg-[#a91924] sm:w-auto"
                     >
                         Donate Today
                     </button>
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
             {/* Flagship project */}
             <section
                 aria-labelledby="project-title"
-                className="bg-[#0b2133] px-6 py-14 text-white md:px-16 md:py-16"
+                className="bg-[#0b2133] px-4 py-10 text-white sm:px-6 sm:py-14 md:px-16 md:py-16"
             >
                 <div className="grid items-center gap-10 md:grid-cols-2">
                     <div>
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
 
                         <h1
                             id="project-title"
-                            className="text-4xl font-bold leading-tight md:text-5xl"
+                            className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl"
                         >
                             Hidden Wounds
                             <br />
@@ -88,13 +88,13 @@ export default function ProjectsPage() {
                     {/* Decorative illustration matching the Figma placeholder */}
                     <div
                         aria-hidden="true"
-                        className="relative aspect-[1.63] overflow-hidden rounded-2xl bg-[#195581]"
+                        className="relative aspect-[1.4] w-full overflow-hidden rounded-2xl bg-[#195581] sm:aspect-[1.63]"
                     >
-                        <p className="absolute left-6 top-6 text-xs uppercase">
+                        <p className="absolute left-4 right-4 top-4 text-[10px] uppercase sm:left-6 sm:right-6 sm:top-6 sm:text-xs">
                             Village Alpha project rendering
                         </p>
 
-                        <div className="absolute right-[12%] top-[13%] h-20 w-20 rounded-full bg-[#c8202c]" />
+                        <div className="absolute right-[12%] top-[22%] aspect-square w-[17%] rounded-full bg-[#c8202c] sm:top-[13%]" />
 
                         <div className="absolute bottom-0 h-8 w-full bg-[#0b2133]/50" />
 
@@ -110,13 +110,13 @@ export default function ProjectsPage() {
             {/* Project overview */}
             <section
                 aria-labelledby="foundation-title"
-                className="bg-[#f7f5eb] px-6 py-14 md:px-16"
+                className="bg-[#f7f5eb] px-4 py-10 sm:px-6 sm:py-14 md:px-16"
             >
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
                     <div>
                         <h2
                             id="foundation-title"
-                            className="text-3xl font-bold leading-tight"
+                            className="text-2xl sm:text-3xl font-bold leading-tight"
                         >
                             A foundation for long-term stability
                         </h2>
@@ -160,9 +160,9 @@ export default function ProjectsPage() {
             {/* Project progress */}
             <section
                 aria-labelledby="progress-title"
-                className="px-6 py-14 md:px-16"
+                className="px-4 py-10 sm:px-6 sm:py-14 md:px-16"
             >
-                <h2 id="progress-title" className="text-3xl font-bold">
+                <h2 id="progress-title" className="text-2xl sm:text-3xl font-bold">
                     Progress is already underway
                 </h2>
 
@@ -201,9 +201,9 @@ export default function ProjectsPage() {
             {/* Why the project matters */}
             <section
                 aria-labelledby="impact-title"
-                className="bg-[#195581] px-6 py-14 text-white md:px-16"
+                className="bg-[#195581] px-4 py-10 sm:px-6 sm:py-14 text-white md:px-16"
             >
-                <h2 id="impact-title" className="text-3xl font-bold">
+                <h2 id="impact-title" className="text-2xl sm:text-3xl font-bold">
                     Veterans deserve more than temporary solutions.
                 </h2>
 
@@ -241,11 +241,11 @@ export default function ProjectsPage() {
             <section
                 id="support"
                 aria-labelledby="support-title"
-                className="scroll-mt-6 bg-[#f7f5eb] px-6 py-14 md:px-16"
+                className="scroll-mt-6 bg-[#f7f5eb] px-4 py-10 sm:px-6 sm:py-14 md:px-16"
             >
                 <h2
                     id="support-title"
-                    className="text-center text-3xl font-bold"
+                    className="text-center text-2xl sm:text-3xl font-bold"
                 >
                     Be part of what comes next.
                 </h2>
@@ -256,7 +256,7 @@ export default function ProjectsPage() {
                 </p>
                 <button
                     type="button"
-                    className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-[#c8202c] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a91924] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c8202c]"
+                    className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[#c8202c] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a91924] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c8202c] sm:w-auto"
                 >
                     Help Build the Village
                 </button>
