@@ -185,7 +185,7 @@ export default function Footer() {
                                     href="tel:+18337258388"
                                     className="block hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
-                                    1-833 SALUTEU [725-8838]
+                                    1-833 SALUTEU [725-8388]
                                 </a>
                             </div>
                         </address>
