@@ -128,19 +128,20 @@ export default function Footer() {
                             </li>
 
                             <li>
-                                <button
-                                    type="button"
-                                    disabled
-                                    className="text-left"
+                                <Link
+                                    href="/about-leadership"
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
                                     Leadership &amp; Current Board
-                                </button>
+                                </Link>
                             </li>
-
                             <li>
-                                <button type="button" disabled>
+                                <a
+                                    href={veteranServices[0].href}
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
                                     Veterans Crisis Line
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -184,7 +185,7 @@ export default function Footer() {
                                     href="tel:+18337258388"
                                     className="block hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
-                                    1-833 SALUTEU [725-8388]
+                                    1-833 SALUTEU [725-8838]
                                 </a>
                             </div>
                         </address>
