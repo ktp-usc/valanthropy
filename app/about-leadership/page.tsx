@@ -84,7 +84,10 @@ function BioDialog({ person, children }: { person: Person; children: React.React
       <Dialog.Portal>
         <Dialog.Overlay className={DIALOG_OVERLAY} />
         <Dialog.Content className={DIALOG_CONTENT}>
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6">
+          <div
+            tabIndex={0}
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-red-700"
+          >
             {person.image && (
               <div className={DIALOG_IMAGE_WRAPPER}>
                 <Image
