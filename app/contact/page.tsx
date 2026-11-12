@@ -10,7 +10,7 @@ const options = [
         title: "General Contact",
         desc: "Have questions about VAlanthropy, Hidden Wounds Village Alpha, donations, sponsorships, partnerships, events, or our mission?",
         cta: "General Contact Form",
-        href: "/start-a-conversation",
+        href: "https://valanthropy.dm.networkforgood.com/forms/general-contact-form",
     },
     {
         title: "Stay in Touch",
@@ -27,7 +27,7 @@ const options = [
 ];
 
 const optionButtonClass =
-    "inline-block rounded bg-red-700 px-14 py-5 text-base font-semibold text-white";
+    "inline-flex h-20 w-full items-center justify-center rounded bg-red-700 px-4 text-center text-base font-semibold text-white md:w-60";
 
 export default function Contact() {
     return (
