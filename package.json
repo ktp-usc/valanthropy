@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "wp:push": "node --env-file=.env.local scripts/push-design-to-wordpress.mjs --apply"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
@@ -14,6 +15,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
+    "node-html-parser": "^9.0.7",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",

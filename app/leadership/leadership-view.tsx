@@ -4,14 +4,14 @@ import Image from "next/image";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
 
-type Person = {
+export type Person = {
   name: string;
   title: string;
   bio: string;
   image?: string;
 };
 
-const PLACEHOLDER_BIO = "Bio coming soon.";
+export type PeopleSection = { title: string; people: Person[] };
 
 // Page
 const PAGE = "bg-white text-slate-900";
@@ -54,22 +54,6 @@ const DIALOG_BIO = "text-sm text-slate-600";
 const BUTTON_PRIMARY = "cursor-pointer rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white";
 const DIALOG_CLOSE = `mt-6 w-full ${BUTTON_PRIMARY}`;
 
-const leaders: Person[] = [
-  { name: "Francis W. Altman, Jr.", title: "Founder, Chief Executive Officer", image: "/about-leadership/francis-w-altman-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Thomas L. Lash", title: "Founder, President", image: "/about-leadership/thomas-lash-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Richard Creswell", title: "Director of Advancement", image: "/about-leadership/richard-caswell-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Lilly Ellen Williams", title: "Comunications Director", image: "/about-leadership/lilly-ellen-williams-valanthropy.png", bio: PLACEHOLDER_BIO },
-];
-
-const directors: Person[] = [
-  { name: "Robin Rawl", title: "Advising Director", bio: PLACEHOLDER_BIO },
-  { name: "Tyler Priester", title: "Advising Director", bio: PLACEHOLDER_BIO },
-  { name: "Hammond Edwards III", title: "Advising Director", bio: PLACEHOLDER_BIO },
-  { name: "Mike Genova", title: "Advising Director", bio: PLACEHOLDER_BIO },
-  { name: "William Allen", title: "Advising Director", bio: PLACEHOLDER_BIO },
-  { name: "Barbara Rakes", title: "Advising Director", bio: PLACEHOLDER_BIO },
-];
-
 function BioDialog({ person, children }: { person: Person; children: React.ReactNode }) {
   return (
     <Dialog.Root>
@@ -96,7 +80,7 @@ function BioDialog({ person, children }: { person: Person; children: React.React
   );
 }
 
-export default function Leadership() {
+export default function LeadershipView({ title, sections }: { title: string; sections: PeopleSection[] }) {
   return (
     <div className={PAGE}>
       <Header active="/about" />
@@ -105,51 +89,46 @@ export default function Leadership() {
       <section className={SECTION_HERO}>
         <div className={CONTAINER}>
           <p className={EYEBROW}>About Us</p>
-          <h1 className={PAGE_TITLE}>Leadership</h1>
+          <h1 className={PAGE_TITLE}>{title}</h1>
         </div>
       </section>
 
-      {/* Leadership team */}
-      <section className={SECTION_LIGHT}>
-        <div className={CONTAINER}>
-          <h2 className={SECTION_TITLE}>Our team</h2>
-          <ul className={GRID_TEAM}>
-            {leaders.map((leader) => (
-              <li key={leader.name}>
-                <BioDialog person={leader}>
-                  <button type="button" className={CARD_LIGHT}>
-                    <div className={CARD_IMAGE_WRAPPER}>
-                      <Image
-                        src={leader.image!} alt={leader.name} fill sizes={CARD_IMAGE_SIZES} className={IMAGE_COVER}/>
-                    </div>
-                    <h3 className={CARD_NAME_LIGHT}>{leader.name}</h3>
-                    <p className={CARD_TITLE_LIGHT}>{leader.title}</p>
-                  </button>
-                </BioDialog>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Board */}
-      <section className={SECTION_DARK}>
-        <div className={CONTAINER}>
-          <h2 className={SECTION_TITLE}>Board of Directors</h2>
-          <ul className={GRID_BOARD}>
-            {directors.map((d) => (
-              <li key={d.name}>
-                <BioDialog person={d}>
-                  <button type="button" className={CARD_DARK}>
-                    <h3 className={CARD_NAME_DARK}>{d.name}</h3>
-                    <p className={CARD_TITLE_DARK}>{d.title}</p>
-                  </button>
-                </BioDialog>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {sections.map((section) => {
+        // Sections where people have photos show as photo cards; the rest as a simple list.
+        const hasPhotos = section.people.some((p) => p.image);
+        return (
+          <section key={section.title} className={hasPhotos ? SECTION_LIGHT : SECTION_DARK}>
+            <div className={CONTAINER}>
+              <h2 className={SECTION_TITLE}>{section.title}</h2>
+              <ul className={hasPhotos ? GRID_TEAM : GRID_BOARD}>
+                {section.people.map((person, i) => (
+                  <li key={`${person.name}-${i}`}>
+                    <BioDialog person={person}>
+                      <button type="button" className={hasPhotos ? CARD_LIGHT : CARD_DARK}>
+                        {hasPhotos && (
+                          <div className={CARD_IMAGE_WRAPPER}>
+                            {person.image && (
+                              <Image
+                                src={person.image}
+                                alt={person.name}
+                                fill
+                                sizes={CARD_IMAGE_SIZES}
+                                className={IMAGE_COVER}
+                              />
+                            )}
+                          </div>
+                        )}
+                        <h3 className={hasPhotos ? CARD_NAME_LIGHT : CARD_NAME_DARK}>{person.name}</h3>
+                        <p className={hasPhotos ? CARD_TITLE_LIGHT : CARD_TITLE_DARK}>{person.title}</p>
+                      </button>
+                    </BioDialog>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

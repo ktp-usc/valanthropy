@@ -16,13 +16,12 @@ const links: NavItem[] = [
         href: "/about",
         label: "About",
         children: [
-            { href: "/about", label: "About Us" },
             {
-                href: "/about-leadership",
+                href: "/leadership",
                 label: "Leadership & Current Board",
             },
             {
-                href: "/partners-and-sponsors",
+                href: "/become-a-partner",
                 label: "Partners & Sponsors",
             },
             {
@@ -47,7 +46,6 @@ const links: NavItem[] = [
         label: "Ways to Help",
         children: [
             { href: "/donate", label: "Donate" },
-            { href: "/ways-to-help", label: "Sponsor or Partner" },
             { href: "/ways-to-help", label: "Volunteer" },
         ],
     },
@@ -56,10 +54,6 @@ const links: NavItem[] = [
         label: "Contact",
         children: [
             { href: "/contact", label: "Contact Us" },
-            {
-                href: "mailto:info@valanthropy.org",
-                label: "info@valanthropy.org",
-            },
         ],
     },
 ];

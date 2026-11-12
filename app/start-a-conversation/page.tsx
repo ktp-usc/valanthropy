@@ -91,7 +91,7 @@ export default async function StartAConversation({
             </section>
 
             <section className="bg-slate-900 px-8 py-10 text-center text-white">
-                <Link href="/partners-and-sponsors" className="text-xs font-semibold hover:underline">
+                <Link href="/become-a-partner" className="text-xs font-semibold hover:underline">
                     &larr; Back to Partners & Sponsors
                 </Link>
             </section>

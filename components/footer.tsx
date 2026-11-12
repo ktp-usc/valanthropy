@@ -5,7 +5,7 @@ const veteranServices = [
     { href: "https://www.veteranscrisisline.net", label: "Veteran Crisis Line" },
     { href: "#", label: "Resource Center" },
     { href: "#", label: "Policies" },
-    { href: "/about-leadership", label: "Leadership & Current Board" },
+    { href: "/leadership", label: "Leadership & Current Board" },
 ];
 
 const quickLinks = [
@@ -129,7 +129,7 @@ export default function Footer() {
 
                             <li>
                                 <Link
-                                    href="/about-leadership"
+                                    href="/leadership"
                                     className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
                                     Leadership &amp; Current Board
