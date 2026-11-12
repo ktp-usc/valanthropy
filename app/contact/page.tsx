@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/header";
 const EMAIL = "info@valanthropy.org";
+const NEWSLETTER_SIGNUP_URL = "https://valanthropy.dm.networkforgood.com/forms/subscibe-for-updates";
 
 const mailto = (subject: string) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
 
@@ -16,7 +17,7 @@ const options = [
         title: "Stay in Touch",
         desc: "Receive project updates, newsletters, event announcements, volunteer opportunities, and ways to support Hidden Wounds Village Alpha.",
         cta: "Stay in Touch",
-        href: mailto("Stay in touch"),
+        href: NEWSLETTER_SIGNUP_URL,
     },
     {
         title: "Request a Speaker",
