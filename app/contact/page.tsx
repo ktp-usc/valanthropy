@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/header";
 const EMAIL = "info@valanthropy.org";
+const NEWSLETTER_SIGNUP_URL = "https://valanthropy.dm.networkforgood.com/forms/subscibe-for-updates";
 
 const mailto = (subject: string) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
 
@@ -10,13 +11,13 @@ const options = [
         title: "General Contact",
         desc: "Have questions about VAlanthropy, Hidden Wounds Village Alpha, donations, sponsorships, partnerships, events, or our mission?",
         cta: "General Contact Form",
-        href: "/start-a-conversation",
+        href: "https://valanthropy.dm.networkforgood.com/forms/general-contact-form",
     },
     {
         title: "Stay in Touch",
         desc: "Receive project updates, newsletters, event announcements, volunteer opportunities, and ways to support Hidden Wounds Village Alpha.",
         cta: "Stay in Touch",
-        href: mailto("Stay in touch"),
+        href: NEWSLETTER_SIGNUP_URL,
     },
     {
         title: "Request a Speaker",
@@ -27,7 +28,7 @@ const options = [
 ];
 
 const optionButtonClass =
-    "inline-block rounded bg-red-700 px-14 py-5 text-base font-semibold text-white";
+    "inline-flex h-20 w-full items-center justify-center rounded bg-red-700 px-4 text-center text-base font-semibold text-white md:w-60";
 
 export default function Contact() {
     return (
@@ -49,8 +50,8 @@ export default function Contact() {
             </section>
 
             {/* Contact options */}
-            <section className="bg-white px-4 py-14 md:px-8">
-                <div className="mx-auto max-w-7xl">
+            <section className="bg-white px-4 py-14 md:px-16">
+                <div className="mx-auto max-w-5xl">
                     <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
                     <p className="mb-6 text-sm text-slate-600">
                         Choose the option that best fits your needs.
