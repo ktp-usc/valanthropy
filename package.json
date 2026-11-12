@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "wp:push": "node --env-file=.env.local scripts/push-design-to-wordpress.mjs --apply"
+    "wp:push": "node --env-file=.env.local scripts/push-design-to-wordpress.mjs --apply",
+    "wp:text": "node --env-file=.env.local scripts/sync-wp-text.mjs",
+    "wp:text:preview": "node --env-file=.env.local scripts/sync-wp-text.mjs --preview"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",

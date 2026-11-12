@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/header";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "projects-new".
+const T = slotText("projects-new");
 export const metadata: Metadata = {
     title: "projects | VAlanthropy",
     description:
@@ -152,31 +156,31 @@ export default function ProjectsPage() {
                     <div className={CONTAINER}>
                         <div className={HERO_COLUMNS}>
                             <div>
-                                <p className={EYEBROW}>Projects</p>
+                                <p className={EYEBROW}><T>Projects</T></p>
 
                                 <h1
                                     id="project-title"
                                     className={PAGE_TITLE}
-                                >
+                                ><T>
                                     Hidden Wounds Village Alpha
-                                </h1>
+                                </T></h1>
 
-                                <p className={HERO_BODY}>
+                                <p className={HERO_BODY}><T>
                                     Flagship project | Sumter, South Carolina
-                                </p>
+                                </T></p>
 
-                                <p className={HERO_BODY}>
+                                <p className={HERO_BODY}><T>
                                     Permanent, affordable housing designed to
                                     help veterans build stability,
                                     independence, and a stronger future.
-                                </p>
+                                </T></p>
 
                                 <Link
                                     href="/donate"
                                     className={DONATE_BUTTON}
-                                >
+                                ><T>
                                     Help Build the Village
-                                </Link>
+                                </T></Link>
                             </div>
 
                             {/* Decorative project illustration */}
@@ -184,9 +188,9 @@ export default function ProjectsPage() {
                                 aria-hidden="true"
                                 className={ILLUSTRATION}
                             >
-                                <p className={ILLUSTRATION_LABEL}>
+                                <p className={ILLUSTRATION_LABEL}><T>
                                     Village Alpha project rendering
-                                </p>
+                                </T></p>
 
                                 <div className={ILLUSTRATION_CIRCLE} />
                                 <div className={ILLUSTRATION_GROUND} />
@@ -209,11 +213,11 @@ export default function ProjectsPage() {
                                 <h2
                                     id="foundation-title"
                                     className={SECTION_HEADING}
-                                >
+                                ><T>
                                     A foundation for long-term stability
-                                </h2>
+                                </T></h2>
 
-                                <p className={BODY}>
+                                <p className={BODY}><T>
                                     Hidden Wounds Village Alpha is
                                     VAlanthropy’s flagship veteran housing
                                     initiative. It is designed to connect
@@ -221,7 +225,7 @@ export default function ProjectsPage() {
                                     support, employment transition resources,
                                     community reintegration, and outcome
                                     tracking.
-                                </p>
+                                </T></p>
                             </div>
 
                             <ul className={BENEFIT_LIST}>
@@ -251,15 +255,15 @@ export default function ProjectsPage() {
                         <h2
                             id="progress-title"
                             className={SECTION_HEADING}
-                        >
+                        ><T>
                             Progress is already underway
-                        </h2>
+                        </T></h2>
 
-                        <p className={PROGRESS_INTRO}>
+                        <p className={PROGRESS_INTRO}><T>
                             Important groundwork is complete. The current
                             focus is finalizing the building plans that will
                             guide the next phase of construction.
-                        </p>
+                        </T></p>
 
                         <ol className={THREE_COLUMNS}>
                             {MILESTONES.map((milestone) => (
@@ -267,17 +271,17 @@ export default function ProjectsPage() {
                                     key={milestone.id}
                                     className={PROGRESS_CARD}
                                 >
-                                    <p className={MILESTONE_NUMBER}>
+                                    <p className={MILESTONE_NUMBER}><T>
                                         {milestone.number}
-                                    </p>
+                                    </T></p>
 
-                                    <h3 className={DARK_CARD_TITLE}>
+                                    <h3 className={DARK_CARD_TITLE}><T>
                                         {milestone.title}
-                                    </h3>
+                                    </T></h3>
 
-                                    <p className={DARK_BODY}>
+                                    <p className={DARK_BODY}><T>
                                         {milestone.description}
-                                    </p>
+                                    </T></p>
                                 </li>
                             ))}
                         </ol>
@@ -293,20 +297,20 @@ export default function ProjectsPage() {
                         <h2
                             id="impact-title"
                             className={SECTION_HEADING}
-                        >
+                        ><T>
                             Veterans deserve more than temporary solutions.
-                        </h2>
+                        </T></h2>
 
                         <ul className={THREE_COLUMNS}>
                             {IMPACTS.map((impact) => (
                                 <li key={impact.id}>
-                                    <h3 className={LIGHT_CARD_TITLE}>
+                                    <h3 className={LIGHT_CARD_TITLE}><T>
                                         {impact.title}
-                                    </h3>
+                                    </T></h3>
 
-                                    <p className={BODY}>
+                                    <p className={BODY}><T>
                                         {impact.description}
-                                    </p>
+                                    </T></p>
                                 </li>
                             ))}
                         </ul>
@@ -322,21 +326,21 @@ export default function ProjectsPage() {
                         <h2
                             id="support-title"
                             className={SECTION_HEADING}
-                        >
+                        ><T>
                             Be part of what comes next.
-                        </h2>
+                        </T></h2>
 
-                        <p className={DARK_BODY}>
+                        <p className={DARK_BODY}><T>
                             Your donation, sponsorship, or shared connection
                             helps move the village forward.
-                        </p>
+                        </T></p>
 
                         <Link
                             href="/donate"
                             className={DONATE_BUTTON}
-                        >
+                        ><T>
                             Help Build the Village
-                        </Link>
+                        </T></Link>
                     </div>
                 </section>
             </main>

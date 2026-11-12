@@ -11,6 +11,10 @@ import {
     toHref,
     type FlatSection,
 } from "@/lib/wordpress";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "contact-new".
+const T = slotText("contact-new");
 
 /*
  * Contact page. Text is edited in WordPress on a page with the slug below (a separate
@@ -94,17 +98,17 @@ const DEFAULTS: ContactContent = {
         {
             label: "Phone",
             value: (
-                <a href="tel:+18337258388" className={LINK_CLASS}>
+                <a href="tel:+18337258388" className={LINK_CLASS}><T>
                     1-833 SALUTEU [725-8388]
-                </a>
+                </T></a>
             ),
         },
         {
             label: "Email",
             value: (
-                <a href={`mailto:${EMAIL}`} className={LINK_CLASS}>
+                <a href={`mailto:${EMAIL}`} className={LINK_CLASS}><T>
                     {EMAIL}
-                </a>
+                </T></a>
             ),
         },
     ],
@@ -132,17 +136,17 @@ const DEFAULTS: ContactContent = {
             {
                 label: "Phone",
                 value: (
-                    <a href="tel:+18036604357" className={LINK_CLASS}>
+                    <a href="tel:+18036604357" className={LINK_CLASS}><T>
                         (803) 660-HELP
-                    </a>
+                    </T></a>
                 ),
             },
             {
                 label: "Email",
                 value: (
-                    <a href="mailto:info@hiddenwounds.com" className={LINK_CLASS}>
+                    <a href="mailto:info@hiddenwounds.com" className={LINK_CLASS}><T>
                         info@hiddenwounds.com
-                    </a>
+                    </T></a>
                 ),
             },
         ],
@@ -277,22 +281,22 @@ export default async function Contact() {
             {/* Hero */}
             <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">Contact</p>
-                    <h1 className="mb-4 text-4xl font-bold leading-tight">
+                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500"><T>Contact</T></p>
+                    <h1 className="mb-4 text-4xl font-bold leading-tight"><T>
                         Contact VAlanthropy Today
-                    </h1>
-                    <p className="max-w-md text-sm">
+                    </T></h1>
+                    <p className="max-w-md text-sm"><T>
                         Have questions, want to support our mission, or need help finding the right
                         next step? We&rsquo;re here to help.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 
             {/* Contact options */}
             <section className="bg-white px-4 py-14 md:px-8">
                 <div className="mx-auto max-w-7xl">
-                    <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
-                    <p className="mb-6 text-sm text-slate-600">{content.optionsIntro}</p>
+                    <h2 className="mb-2 text-2xl font-bold text-red-700"><T>Contact Options</T></h2>
+                    <p className="mb-6 text-sm text-slate-600"><T>{content.optionsIntro}</T></p>
                     <ul className="space-y-4">
                         {content.options.map((o) => (
                             <li
@@ -300,23 +304,23 @@ export default async function Contact() {
                                 className="flex flex-col gap-4 rounded border border-slate-200 p-6 md:flex-row md:items-center md:justify-between md:gap-8"
                             >
                                 <div className="max-w-2xl">
-                                    <h3 className="mb-2 text-lg font-bold">{o.title}</h3>
-                                    <p className="text-sm text-slate-600">{o.desc}</p>
+                                    <h3 className="mb-2 text-lg font-bold"><T>{o.title}</T></h3>
+                                    <p className="text-sm text-slate-600"><T>{o.desc}</T></p>
                                 </div>
                                 {o.href.startsWith("/") ? (
                                     <Link
                                         href={o.href}
                                         className={`${optionButtonClass} shrink-0 self-start text-center md:self-auto`}
-                                    >
+                                    ><T>
                                         {o.cta}
-                                    </Link>
+                                    </T></Link>
                                 ) : (
                                     <a
                                         href={o.href}
                                         className={`${optionButtonClass} shrink-0 self-start text-center md:self-auto`}
-                                    >
+                                    ><T>
                                         {o.cta}
-                                    </a>
+                                    </T></a>
                                 )}
                             </li>
                         ))}
@@ -327,33 +331,33 @@ export default async function Contact() {
             {/* Contact information */}
             <section className="bg-slate-100 px-8 py-14 md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700">
+                    <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700"><T>
                         VAlanthropy
-                    </h2>
-                    <h3 className="mb-6 text-2xl font-bold">Contact Information</h3>
+                    </T></h2>
+                    <h3 className="mb-6 text-2xl font-bold"><T>Contact Information</T></h3>
                     <div className="grid gap-4 md:grid-cols-2">
                         {content.info.map((item) => (
                             <div
                                 key={item.label}
                                 className="rounded border border-slate-200 bg-white p-5 text-sm"
                             >
-                                <h4 className="mb-2 font-bold">{item.label}</h4>
+                                <h4 className="mb-2 font-bold"><T>{item.label}</T></h4>
                                 <div>{item.value}</div>
                             </div>
                         ))}
                     </div>
 
                     <div className="mt-8 text-sm text-slate-600">
-                        <h4 className="mb-2 font-bold text-slate-900">Nonprofit Information</h4>
+                        <h4 className="mb-2 font-bold text-slate-900"><T>Nonprofit Information</T></h4>
                         {content.nonprofit.map((line, i) => (
                             <p
                                 key={i}
                                 className={
                                     /^EIN/i.test(line) ? "mb-1 font-semibold text-slate-900" : "mb-1"
                                 }
-                            >
+                            ><T>
                                 {line}
-                            </p>
+                            </T></p>
                         ))}
                     </div>
                 </div>
@@ -363,18 +367,18 @@ export default async function Contact() {
             <section className="bg-white px-8 py-14 md:px-16">
                 <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
                     <div>
-                        <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700">
+                        <h2 className="mb-1 text-xs font-semibold uppercase tracking-wide text-red-700"><T>
                             Veteran Support Partner
-                        </h2>
-                        <h3 className="mb-3 text-2xl font-bold">{content.partner.name}</h3>
-                        <p className="text-sm text-slate-600">{content.partner.desc}</p>
+                        </T></h2>
+                        <h3 className="mb-3 text-2xl font-bold"><T>{content.partner.name}</T></h3>
+                        <p className="text-sm text-slate-600"><T>{content.partner.desc}</T></p>
                     </div>
                     <div className="space-y-4 self-start rounded border border-slate-200 p-6 text-sm">
                         {content.partner.items.map((item) => (
                             <div key={item.label}>
-                                <p className="text-xs uppercase tracking-wide text-slate-500">
+                                <p className="text-xs uppercase tracking-wide text-slate-500"><T>
                                     {item.label}
-                                </p>
+                                </T></p>
                                 <div>{item.value}</div>
                             </div>
                         ))}
@@ -385,18 +389,18 @@ export default async function Contact() {
             {/* Crisis line (kept in code: safety-critical) */}
             <section className="bg-blue-900 px-8 py-14 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-4 text-2xl font-bold">If You Are a Veteran in Crisis</h2>
-                    <p className="mb-3 max-w-2xl text-sm font-bold text-red-400">
+                    <h2 className="mb-4 text-2xl font-bold"><T>If You Are a Veteran in Crisis</T></h2>
+                    <p className="mb-3 max-w-2xl text-sm font-bold text-red-400"><T>
                         If you or someone you know is in immediate danger, call 911 immediately.
-                    </p>
-                    <p className="mb-4 max-w-2xl text-sm">
+                    </T></p>
+                    <p className="mb-4 max-w-2xl text-sm"><T>
                         Veterans, service members, and their loved ones can reach the Veterans
                         Crisis Line 24 hours a day, 7 days a week.
-                    </p>
+                    </T></p>
                     <ul className="mb-4 space-y-1 text-sm font-semibold">
-                        <li>Call: 988, then press 1</li>
-                        <li>Text: 838255</li>
-                        <li>
+                        <li><T>Call: 988, then press 1</T></li>
+                        <li><T>Text: 838255</T></li>
+                        <li><T>
                             Online Chat:{" "}
                             <a
                                 href="https://www.veteranscrisisline.net"
@@ -406,30 +410,30 @@ export default async function Contact() {
                             >
                                 Veterans Crisis Line
                             </a>
-                        </li>
+                        </T></li>
                     </ul>
-                    <p className="mb-4 max-w-2xl text-sm">
+                    <p className="mb-4 max-w-2xl text-sm"><T>
                         The previous number, 1-800-273-8255 and press 1, may also connect callers
                         to the Veterans Crisis Line.
-                    </p>
-                    <p className="max-w-2xl text-sm text-slate-300">
+                    </T></p>
+                    <p className="max-w-2xl text-sm text-slate-300"><T>
                         VAlanthropy and Hidden Wounds Resource Center are not emergency response
                         providers. Website forms, emails, and phone messages are not monitored in
                         real time. If this is an emergency or immediate safety concern, call 911 or
                         contact the Veterans Crisis Line right away.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 
             {/* Privacy & response notice */}
             <section className="bg-slate-100 px-8 py-14 md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-4 text-2xl font-bold text-red-700">
+                    <h2 className="mb-4 text-2xl font-bold text-red-700"><T>
                         Privacy &amp; Response Notice
-                    </h2>
+                    </T></h2>
                     <div className="max-w-2xl space-y-3 text-sm text-slate-600">
                         {content.privacy.map((line, i) => (
-                            <p key={i}>{line}</p>
+                            <p key={i}><T>{line}</T></p>
                         ))}
                     </div>
                 </div>

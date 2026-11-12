@@ -15,6 +15,10 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import villageImage from "./Hidden_Wounds_Village.png";
 import villageHouseImage from "./Hidden_Wounds_Village_house.png";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "donate-new".
+const T = slotText("donate-new");
 
 const donationLinks = {
   general:
@@ -131,9 +135,9 @@ export default function DonatePage() {
       <a
         className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-4 focus:text-slate-900"
         href="#main-content"
-      >
+      ><T>
         Skip to content
-      </a>
+      </T></a>
 
       <Header active="/ways-to-help" donateHref={donationLinks.general} />
 
@@ -144,16 +148,16 @@ export default function DonatePage() {
             className={`${CONTAINER} grid min-w-0 items-center gap-8 lg:grid-cols-2`}
           >
             <div className="min-w-0">
-              <p className={EYEBROW_DARK}>Give with purpose</p>
-              <h1 className={PAGE_TITLE}>
+              <p className={EYEBROW_DARK}><T>Give with purpose</T></p>
+              <h1 className={PAGE_TITLE}><T>
                 Help build a place where veterans can rebuild.
-              </h1>
-              <p className={`mt-6 ${BODY_DARK}`}>
+              </T></h1>
+              <p className={`mt-6 ${BODY_DARK}`}><T>
                 VAlanthropy is developing permanent, affordable veteran housing
                 at Hidden Wounds Village Alpha in Sumter, South Carolina.
                 Stable housing can be a foundation for healing, independence,
                 and long-term stability.
-              </p>
+              </T></p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   className={BUTTON_ON_DARK}
@@ -169,10 +173,10 @@ export default function DonatePage() {
                   <ArrowDown aria-hidden="true" size={16} />
                 </a>
               </div>
-              <p className={`mt-5 ${BODY_DARK}`}>
+              <p className={`mt-5 ${BODY_DARK}`}><T>
                 Your support can help move construction, furnishing, and
                 move-in readiness forward.
-              </p>
+              </T></p>
             </div>
 
             <figure className="min-w-0 overflow-hidden rounded border border-white/30">
@@ -191,9 +195,9 @@ export default function DonatePage() {
                   <MapPin aria-hidden="true" size={16} />
                   Sumter, South Carolina
                 </div>
-                <p className="mt-2 font-bold text-white">
+                <p className="mt-2 font-bold text-white"><T>
                   Hidden Wounds Village Alpha
-                </p>
+                </T></p>
               </figcaption>
             </figure>
           </div>
@@ -209,15 +213,15 @@ export default function DonatePage() {
             className={`${CONTAINER} grid min-w-0 items-center gap-6 md:grid-cols-[1fr_auto] md:gap-8`}
           >
             <div>
-              <p className={EYEBROW_LIGHT}>Start a conversation</p>
-              <h2 className={SECTION_TITLE} id="donation-contact-heading">
+              <p className={EYEBROW_LIGHT}><T>Start a conversation</T></p>
+              <h2 className={SECTION_TITLE} id="donation-contact-heading"><T>
                 Let’s find the right way to give.
-              </h2>
-              <p className={BODY_LIGHT}>
+              </T></h2>
+              <p className={BODY_LIGHT}><T>
                 Whether you are considering a one-time gift, monthly giving, a
                 donor-advised fund, legacy giving, corporate support, or another
                 option, VAlanthropy’s team can help you explore the next step.
-              </p>
+              </T></p>
             </div>
             <a
               className={BUTTON_PRIMARY}
@@ -233,21 +237,21 @@ export default function DonatePage() {
         <section aria-labelledby="impact-heading" className={SECTION_DARK}>
           <div className={`${CONTAINER} grid min-w-0 gap-8 md:grid-cols-2`}>
             <div className="min-w-0">
-              <p className={EYEBROW_DARK}>Why your support matters</p>
-              <h2 className={SECTION_TITLE} id="impact-heading">
+              <p className={EYEBROW_DARK}><T>Why your support matters</T></p>
+              <h2 className={SECTION_TITLE} id="impact-heading"><T>
                 Housing is the foundation for stability.
-              </h2>
-              <p className={BODY_DARK}>
+              </T></h2>
+              <p className={BODY_DARK}><T>
                 Hidden Wounds Village Alpha is being developed as a permanent,
                 affordable housing community for veterans. VAlanthropy’s work
                 includes housing development, infrastructure, construction,
                 furnishing, and long-term project sustainability.
-              </p>
-              <p className={`mt-4 ${BODY_DARK}`}>
+              </T></p>
+              <p className={`mt-4 ${BODY_DARK}`}><T>
                 The community is designed to connect stable housing with
                 trauma-informed support, employment transition resources, and
                 community reintegration.
-              </p>
+              </T></p>
               <a
                 className={`mt-6 inline-flex max-w-full flex-wrap items-center gap-2 ${LINK_DARK}`}
                 href={donationLinks.general}
@@ -260,7 +264,7 @@ export default function DonatePage() {
             </div>
 
             <div className="min-w-0 rounded border border-white/30 p-4">
-              <h3 className="text-sm font-semibold">What support helps advance</h3>
+              <h3 className="text-sm font-semibold"><T>What support helps advance</T></h3>
               <ul className="mt-5 space-y-4">
                 {[
                   "Construction and infrastructure",
@@ -272,7 +276,7 @@ export default function DonatePage() {
                       aria-hidden="true"
                       className="mt-2 size-2 shrink-0 rounded-full bg-red-400"
                     />
-                    <span className="break-words">{item}</span>
+                    <span className="break-words"><T>{item}</T></span>
                   </li>
                 ))}
               </ul>
@@ -284,16 +288,16 @@ export default function DonatePage() {
         <section className={SECTION_LIGHT}>
           <div className={CONTAINER}>
             <div className="max-w-3xl">
-              <p className={EYEBROW_LIGHT}>Moving forward</p>
-              <h2 className={SECTION_TITLE}>
+              <p className={EYEBROW_LIGHT}><T>Moving forward</T></p>
+              <h2 className={SECTION_TITLE}><T>
                 Progress is already underway.
-              </h2>
-              <p className={BODY_LIGHT}>
+              </T></h2>
+              <p className={BODY_LIGHT}><T>
                 At Hidden Wounds Village Alpha, curbs are installed, the
                 retention pond is finished, and infrastructure and grading
                 work are complete. The current focus is finalizing building
                 plans as the project prepares for construction.
-              </p>
+              </T></p>
             </div>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
@@ -305,10 +309,10 @@ export default function DonatePage() {
                   className="rounded border border-slate-200 bg-white p-4 transition hover:shadow-lg"
                   key={number}
                 >
-                  <span className="text-sm font-semibold text-red-700">
+                  <span className="text-sm font-semibold text-red-700"><T>
                     {number}
-                  </span>
-                  <p className="mt-3 font-bold">{milestone}</p>
+                  </T></span>
+                  <p className="mt-3 font-bold"><T>{milestone}</T></p>
                 </li>
               ))}
             </ul>
@@ -322,9 +326,9 @@ export default function DonatePage() {
                   src={villageImage}
                 />
               </div>
-              <figcaption className="px-4 py-3 text-sm text-slate-600">
+              <figcaption className="px-4 py-3 text-sm text-slate-600"><T>
                 Hidden Wounds Village Alpha
-              </figcaption>
+              </T></figcaption>
             </figure>
           </div>
         </section>
@@ -338,15 +342,15 @@ export default function DonatePage() {
           <div className={CONTAINER}>
             <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
               <div>
-                <p className={EYEBROW_DARK}>Choose your path</p>
-                <h2 className={SECTION_TITLE} id="ways-heading">
+                <p className={EYEBROW_DARK}><T>Choose your path</T></p>
+                <h2 className={SECTION_TITLE} id="ways-heading"><T>
                   Ways to support the work.
-                </h2>
+                </T></h2>
               </div>
-              <p className={`max-w-xl ${BODY_DARK}`}>
+              <p className={`max-w-xl ${BODY_DARK}`}><T>
                 Have a question about an option? Email the team for current
                 details and instructions.
-              </p>
+              </T></p>
             </div>
 
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -359,17 +363,17 @@ export default function DonatePage() {
                     key={option.number}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-red-400">
+                      <span className="text-sm font-semibold text-red-400"><T>
                         {option.number}
-                      </span>
+                      </T></span>
                       <Icon aria-hidden="true" className="text-red-400" size={20} />
                     </div>
-                    <h3 className="mt-4 break-words text-sm font-semibold">
+                    <h3 className="mt-4 break-words text-sm font-semibold"><T>
                       {option.title}
-                    </h3>
-                    <p className="mt-3 flex-1 break-words text-sm leading-6 text-white">
+                    </T></h3>
+                    <p className="mt-3 flex-1 break-words text-sm leading-6 text-white"><T>
                       {option.description}
-                    </p>
+                    </T></p>
                     {option.href === "/donate/ncf" ? (
                       <Link
                         className={`mt-5 inline-flex max-w-full min-w-0 flex-wrap items-center gap-2 self-start ${LINK_DARK}`}

@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/header";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "partners-and-sponsors-new".
+const T = slotText("partners-and-sponsors-new");
 type Organization = {
     name: string;
     logo?: string;
@@ -105,9 +109,9 @@ function SponsorLogo({ org }: { org: Organization }) {
                     className="object-contain p-4"
                 />
             ) : (
-                <span className="text-sm font-semibold text-slate-400">
+                <span className="text-sm font-semibold text-slate-400"><T>
                     {org.name}
-                </span>
+                </T></span>
             )}
         </div>
     );
@@ -118,9 +122,9 @@ function SponsorLogo({ org }: { org: Organization }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={org.name}
-        >
+        ><T>
             {card}
-        </a>
+        </T></a>
     ) : (
         card
     );
@@ -134,69 +138,69 @@ export default function PartnersAndSponsors() {
             {/* Hero */}
             <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">
+                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500"><T>
                         About Us
-                    </p>
-                    <h1 className="mb-4 text-4xl font-bold leading-tight">
+                    </T></p>
+                    <h1 className="mb-4 text-4xl font-bold leading-tight"><T>
                         Partners & Sponsors
-                    </h1>
-                    <p className="mb-6 max-w-md text-sm">
+                    </T></h1>
+                    <p className="mb-6 max-w-md text-sm"><T>
                         The organizations and people who make our work possible.
-                    </p>
+                    </T></p>
                     <Link
                         href="/start-a-conversation"
                         className="inline-block rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
-                    >
+                    ><T>
                         Become a Partner
-                    </Link>
+                    </T></Link>
                 </div>
             </section>
 
             {/* Businesses Building the Way Home */}
             <section className="bg-white px-8 py-14 md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-3 text-2xl font-bold text-red-700">
+                    <h2 className="mb-3 text-2xl font-bold text-red-700"><T>
                         Businesses Building the Way Home
-                    </h2>
-                    <p className="max-w-2xl text-sm text-slate-600">
+                    </T></h2>
+                    <p className="max-w-2xl text-sm text-slate-600"><T>
                         Whether you engage your customers, challenge your
                         employees, sponsor an event, provide needed products or
                         services, or make a financial investment, your business
                         can help VAlanthropy build permanent housing and
                         long-term stability for veterans.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 
             {/* Why It Matters */}
             <section className="bg-blue-900 px-8 py-14 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-3 text-2xl font-bold">
+                    <h2 className="mb-3 text-2xl font-bold"><T>
                         Why It Matters
-                    </h2>
-                    <p className="mb-3 max-w-2xl text-sm">
+                    </T></h2>
+                    <p className="mb-3 max-w-2xl text-sm"><T>
                         Hidden Wounds Village Alpha is VAlanthropy’s flagship
                         veteran housing initiative in Sumter, South Carolina.
                         The community will include 12 permanent, affordable
                         one-bedroom apartments designed to give veterans the
                         stability, connection, and support needed to move forward.
-                    </p>
-                    <p className="max-w-2xl text-sm">
+                    </T></p>
+                    <p className="max-w-2xl text-sm"><T>
                         VAlanthropy leads the development, infrastructure,
                         construction, furnishing, and long-term sustainability
                         of the community. Business partnerships help us continue
                         this work and prepare the village to become a place
                         veterans can truly call home.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 
             {/* Ways to Partner With Us */}
             <section className="bg-slate-100 px-8 py-14 md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-6 text-2xl font-bold text-red-700">
+                    <h2 className="mb-6 text-2xl font-bold text-red-700"><T>
                         Ways to Partner With Us
-                    </h2>
+                    </T></h2>
 
                     {/* Three across, with the last two centered below */}
                     <ul className="grid gap-4 md:grid-cols-6">
@@ -207,12 +211,12 @@ export default function PartnersAndSponsors() {
                                     i === 3 ? "md:col-start-2" : ""
                                 }`}
                             >
-                                <h3 className="mb-2 text-sm font-bold">
+                                <h3 className="mb-2 text-sm font-bold"><T>
                                     {w.title}
-                                </h3>
-                                <p className="text-xs text-slate-600">
+                                </T></h3>
+                                <p className="text-xs text-slate-600"><T>
                                     {w.desc}
-                                </p>
+                                </T></p>
                             </li>
                         ))}
                     </ul>
@@ -221,9 +225,9 @@ export default function PartnersAndSponsors() {
                         <Link
                             href="/start-a-conversation"
                             className="inline-block rounded bg-red-700 px-12 py-4 text-sm font-semibold text-white"
-                        >
+                        ><T>
                             Start a Conversation
-                        </Link>
+                        </T></Link>
                     </div>
                 </div>
             </section>
@@ -231,9 +235,9 @@ export default function PartnersAndSponsors() {
             {/* Sponsors: second copy makes the scrolling loop seamless */}
             <section className="bg-white py-14">
                 <div className="mx-auto mb-6 max-w-5xl px-8 md:px-16">
-                    <h2 className="text-2xl font-bold text-red-700">
+                    <h2 className="text-2xl font-bold text-red-700"><T>
                         Our Sponsors
-                    </h2>
+                    </T></h2>
                 </div>
 
                 <div className="overflow-hidden motion-reduce:overflow-x-auto">
@@ -253,19 +257,19 @@ export default function PartnersAndSponsors() {
 
             {/* CTA */}
             <section className="bg-slate-900 px-8 py-16 text-center text-white">
-                <h2 className="mb-2 text-2xl font-bold">
+                <h2 className="mb-2 text-2xl font-bold"><T>
                     Partner with VAlanthropy.
-                </h2>
-                <p className="mb-6 text-xs text-slate-300">
+                </T></h2>
+                <p className="mb-6 text-xs text-slate-300"><T>
                     Contact us to learn how your organization can help build
                     the village.
-                </p>
+                </T></p>
                 <Link
                     href="/contact"
                     className="inline-block rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
-                >
+                ><T>
                     Contact Us
-                </Link>
+                </T></Link>
             </section>
         </div>
     );

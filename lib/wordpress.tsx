@@ -29,9 +29,19 @@ export const clean = (s: string) => s.replace(/ /g, " ").replace(/\s+/g, " ").t
 /** Fetch one WordPress page by slug. Returns null (and logs) if anything goes wrong. */
 export async function fetchWpPage(slug: string): Promise<{ title: string; html: string } | null> {
     try {
-        const res = await fetch(`${WP_ORIGIN}/wp-json/wp/v2/pages?slug=${encodeURIComponent(slug)}`, {
-            next: { revalidate: REVALIDATE_SECONDS },
-        });
+        // If WP_USER / WP_APP_PASSWORD are set (server-side env vars only), the page may be PRIVATE,
+        // so editors' content pages don't need to be publicly visible on the WordPress site.
+        const { WP_USER, WP_APP_PASSWORD } = process.env;
+        const authed = Boolean(WP_USER && WP_APP_PASSWORD);
+        const res = await fetch(
+            `${WP_ORIGIN}/wp-json/wp/v2/pages?slug=${encodeURIComponent(slug)}${authed ? "&status=publish,private" : ""}`,
+            {
+                next: { revalidate: REVALIDATE_SECONDS },
+                ...(authed
+                    ? { headers: { Authorization: "Basic " + Buffer.from(`${WP_USER}:${WP_APP_PASSWORD}`).toString("base64") } }
+                    : {}),
+            },
+        );
         if (!res.ok) throw new Error(`WordPress responded ${res.status}`);
         const pages = await res.json();
         const html: string | undefined = pages?.[0]?.content?.rendered;

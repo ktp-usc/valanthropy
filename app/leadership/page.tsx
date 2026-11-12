@@ -1,6 +1,6 @@
 import { HTMLElement } from "node-html-parser";
 import { clean, splitSections } from "@/lib/wordpress";
-import { readContent } from "@/lib/content";
+import { contentSources } from "@/lib/content";
 import LeadershipView, { type PeopleSection, type Person } from "./leadership-view";
 
 /*
@@ -77,23 +77,21 @@ function parsePeople(nodes: import("node-html-parser").Node[]): Person[] {
   }));
 }
 
-export default async function Leadership() {
-  const html = await readContent("leadership.html").catch((error) => {
-    console.error("Leadership page: could not read content/leadership.html; using static content.", error);
-    return null;
-  });
+// Slug of the WordPress page that holds this page's text. Falls back to content/leadership.html.
+const WP_CONTENT_SLUG = "leadership-new";
 
+export default async function Leadership() {
   let sections = FALLBACK;
 
-  if (html) {
+  for (const html of await contentSources(WP_CONTENT_SLUG, "leadership.html")) {
     const parsed = splitSections(html)
       .map((s) => ({ title: s.title, people: parsePeople(s.nodes) }))
       .filter((s) => s.people.length > 0);
     if (parsed.length > 0) {
       sections = parsed;
-    } else {
-      console.error("Leadership page: no people found in WordPress content; using static content.");
+      break;
     }
+    console.error("Leadership page: no people found in a content source; trying the next one.");
   }
 
   return <LeadershipView title="Leadership" sections={sections} />;

@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Header from "@/components/header";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "home-new".
+const T = slotText("home-new");
 // Layout
 const PAGE = "bg-white text-slate-900";
 const CONTAINER = "mx-auto max-w-5xl";
@@ -84,21 +88,21 @@ export default function Home() {
                 <div className={CONTAINER}>
                     <div className={HERO_GRID}>
                         <div>
-                            <p className={HERO_LABEL}>
+                            <p className={HERO_LABEL}><T>
                                 VAlanthropy · South Carolina
-                            </p>
+                            </T></p>
 
-                            <h1 id="home-title" className={HERO_TITLE}>
+                            <h1 id="home-title" className={HERO_TITLE}><T>
                                 Permanent housing.
                                 <br />
                                 A stronger foundation for veterans.
-                            </h1>
+                            </T></h1>
 
-                            <p className={HERO_BODY}>
+                            <p className={HERO_BODY}><T>
                                 VAlanthropy develops affordable veteran housing
                                 communities that create pathways to stability,
                                 independence, and long-term success.
-                            </p>
+                            </T></p>
 
                             <div className={ACTIONS}>
                                 <Link
@@ -145,21 +149,21 @@ export default function Home() {
                     <div className={CONTAINER}>
                         <div className={TWO_COLUMNS}>
                             <div>
-                                <p className={LABEL}>What we do</p>
+                                <p className={LABEL}><T>What we do</T></p>
 
-                                <h2 id="work-title" className={SECTION_TITLE}>
+                                <h2 id="work-title" className={SECTION_TITLE}><T>
                                     Building places to call home.
-                                </h2>
+                                </T></h2>
                             </div>
 
                             <div>
-                                <p className={BODY}>
+                                <p className={BODY}><T>
                                     Our work focuses on developing permanent,
                                     affordable housing for veterans in South
                                     Carolina. That includes the infrastructure,
                                     construction, furnishings, and long-term
                                     sustainability behind each housing community.
-                                </p>
+                                </T></p>
 
                                 <Link href="/about" className={RED_LINK}>
                                     Learn about our mission
@@ -181,23 +185,23 @@ export default function Home() {
                     <div className={CONTAINER}>
                         <div className={TWO_COLUMNS}>
                             <div>
-                                <p className={HERO_LABEL}>Who it’s for</p>
+                                <p className={HERO_LABEL}><T>Who it’s for</T></p>
 
                                 <h2
                                     id="veterans-title"
                                     className={SECTION_TITLE}
-                                >
+                                ><T>
                                     Veterans who need a stable place to rebuild.
-                                </h2>
+                                </T></h2>
                             </div>
 
-                            <p className={DARK_BODY}>
+                            <p className={DARK_BODY}><T>
                                 A secure home provides a foundation for health,
                                 employment, and connection. We focus on veterans
                                 who need permanent, affordable housing and a
                                 supportive community as they work toward
                                 long-term independence.
-                            </p>
+                            </T></p>
                         </div>
                     </div>
                 </section>
@@ -208,11 +212,11 @@ export default function Home() {
                     aria-labelledby="help-title"
                 >
                     <div className={CONTAINER}>
-                        <p className={LABEL}>How to help</p>
+                        <p className={LABEL}><T>How to help</T></p>
 
-                        <h2 id="help-title" className={SECTION_TITLE}>
+                        <h2 id="help-title" className={SECTION_TITLE}><T>
                             Find your way to be part of the work.
-                        </h2>
+                        </T></h2>
 
                         <ul className={HELP_LIST}>
                             {HELP_OPTIONS.map((option) => (
@@ -220,13 +224,13 @@ export default function Home() {
                                     key={option.title}
                                     className={HELP_ITEM}
                                 >
-                                    <h3 className={HELP_TITLE}>
+                                    <h3 className={HELP_TITLE}><T>
                                         {option.title}
-                                    </h3>
+                                    </T></h3>
 
-                                    <p className={BODY}>
+                                    <p className={BODY}><T>
                                         {option.description}
-                                    </p>
+                                    </T></p>
 
                                     <Link
                                         href={option.href}
@@ -264,28 +268,28 @@ export default function Home() {
                                     />
                                 </div>
 
-                                <figcaption className={CAPTION}>
+                                <figcaption className={CAPTION}><T>
                                     Hidden Wounds Village Alpha · Sumter,
                                     South Carolina
-                                </figcaption>
+                                </T></figcaption>
                             </figure>
 
                             <div>
-                                <p className={LABEL}>Our work in action</p>
+                                <p className={LABEL}><T>Our work in action</T></p>
 
                                 <h2
                                     id="project-title"
                                     className={SECTION_TITLE}
-                                >
+                                ><T>
                                     Hidden Wounds Village Alpha
-                                </h2>
+                                </T></h2>
 
-                                <p className={BODY}>
+                                <p className={BODY}><T>
                                     Our flagship housing initiative in Sumter
                                     puts this mission into practice: permanent,
                                     affordable housing and a supportive community
                                     for veterans.
-                                </p>
+                                </T></p>
 
                                 <Link
                                     href="/projects"

@@ -3,6 +3,10 @@
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "ways-to-help-new".
+const T = slotText("ways-to-help-new");
 
 // Layout
 const PAGE = "min-h-screen bg-white text-slate-900";
@@ -193,8 +197,8 @@ function OptionDialog({ option, dark }: { option: Option; dark?: boolean }) {
         <Dialog.Root>
             <Dialog.Trigger asChild>
                 <button type="button" className={dark ? CARD_DARK : CARD_LIGHT}>
-                    <h3 className={dark ? CARD_NAME_DARK : CARD_NAME}>{option.name}</h3>
-                    <p className={dark ? CARD_SUBTITLE_DARK : CARD_SUBTITLE}>{option.subtitle}</p>
+                    <h3 className={dark ? CARD_NAME_DARK : CARD_NAME}><T>{option.name}</T></h3>
+                    <p className={dark ? CARD_SUBTITLE_DARK : CARD_SUBTITLE}><T>{option.subtitle}</T></p>
                 </button>
             </Dialog.Trigger>
             <Dialog.Portal>
@@ -202,15 +206,15 @@ function OptionDialog({ option, dark }: { option: Option; dark?: boolean }) {
                 <Dialog.Content className={DIALOG}>
                     <Dialog.Title className={DIALOG_TITLE}>{option.name}</Dialog.Title>
                     <Dialog.Description className={DIALOG_DESCRIPTION}>{option.subtitle}</Dialog.Description>
-                    <p className={BODY}>{option.details}</p>
+                    <p className={BODY}><T>{option.details}</T></p>
                     <ul className={DIALOG_LINKS}>
                         {option.actions.map((action) => (
                             <li key={action.label}>
                                 {action.href.startsWith("#") ? (
                                     <Dialog.Close asChild>
-                                        <a href={action.href} className={DIALOG_LINK}>
+                                        <a href={action.href} className={DIALOG_LINK}><T>
                                             {action.label} →
-                                        </a>
+                                        </T></a>
                                     </Dialog.Close>
                                 ) : (
                                     <a
@@ -219,17 +223,17 @@ function OptionDialog({ option, dark }: { option: Option; dark?: boolean }) {
                                         {...(isExternal(action.href)
                                             ? { target: "_blank", rel: "noopener noreferrer" }
                                             : {})}
-                                    >
+                                    ><T>
                                         {action.label} →
-                                    </a>
+                                    </T></a>
                                 )}
                             </li>
                         ))}
                     </ul>
                     <Dialog.Close asChild>
-                        <button type="button" className={DIALOG_CLOSE}>
+                        <button type="button" className={DIALOG_CLOSE}><T>
                             Close
-                        </button>
+                        </T></button>
                     </Dialog.Close>
                 </Dialog.Content>
             </Dialog.Portal>
@@ -245,19 +249,19 @@ export default function WaysToHelp() {
             {/* Hero */}
             <section className={SECTION_HERO}>
                 <div className={CONTAINER}>
-                    <p className={EYEBROW}>Ways to Help</p>
-                    <h1 className={PAGE_TITLE}>Help build a place where veterans can rebuild</h1>
-                    <p className={HERO_TEXT}>
+                    <p className={EYEBROW}><T>Ways to Help</T></p>
+                    <h1 className={PAGE_TITLE}><T>Help build a place where veterans can rebuild</T></h1>
+                    <p className={HERO_TEXT}><T>
                         Every gift, sponsorship and hour of support moves Hidden Wounds Village Alpha closer to
                         move-in day. Choose the way that works best for you.
-                    </p>
+                    </T></p>
                     <div className={BUTTON_ROW}>
-                        <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className={BUTTON}>
+                        <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className={BUTTON}><T>
                             Give now
-                        </a>
-                        <a href={MONTHLY_URL} target="_blank" rel="noopener noreferrer" className={BUTTON_OUTLINE}>
+                        </T></a>
+                        <a href={MONTHLY_URL} target="_blank" rel="noopener noreferrer" className={BUTTON_OUTLINE}><T>
                             Give $20 a month
-                        </a>
+                        </T></a>
                     </div>
                 </div>
             </section>
@@ -265,8 +269,8 @@ export default function WaysToHelp() {
             {/* Ways to give */}
             <section id="donate" className={SECTION_LIGHT}>
                 <div className={CONTAINER}>
-                    <h2 className={SECTION_TITLE}>Ways to give</h2>
-                    <p className={INTRO}>Select an option to learn more.</p>
+                    <h2 className={SECTION_TITLE}><T>Ways to give</T></h2>
+                    <p className={INTRO}><T>Select an option to learn more.</T></p>
                     <ul className={GRID}>
                         {givingOptions.map((option) => (
                             <li key={option.name}>
@@ -280,23 +284,23 @@ export default function WaysToHelp() {
             {/* NCF instructions */}
             <section id="ncf" className={SECTION_DARK}>
                 <div className={CONTAINER}>
-                    <p className={EYEBROW}>National Christian Foundation</p>
-                    <h2 className={SECTION_TITLE}>How to give through NCF</h2>
+                    <p className={EYEBROW}><T>National Christian Foundation</T></p>
+                    <h2 className={SECTION_TITLE}><T>How to give through NCF</T></h2>
                     <ol className={GRID_FOUR}>
                         {ncfSteps.map((step, i) => (
                             <li key={step} className={STEP}>
                                 <p className={STEP_NUMBER}>Step {i + 1}</p>
-                                <p className={BODY_DARK}>{step}</p>
+                                <p className={BODY_DARK}><T>{step}</T></p>
                             </li>
                         ))}
                     </ol>
                     <div className={BUTTON_ROW}>
-                        <a href={NCF_URL} target="_blank" rel="noopener noreferrer" className={BUTTON}>
+                        <a href={NCF_URL} target="_blank" rel="noopener noreferrer" className={BUTTON}><T>
                             Go to NCF
-                        </a>
-                        <a href={ADVANCEMENT_EMAIL} className={BUTTON_OUTLINE}>
+                        </T></a>
+                        <a href={ADVANCEMENT_EMAIL} className={BUTTON_OUTLINE}><T>
                             Need help? Contact us
-                        </a>
+                        </T></a>
                     </div>
                 </div>
             </section>
@@ -304,7 +308,7 @@ export default function WaysToHelp() {
             {/* Get involved */}
             <section id="get-involved" className={SECTION_LIGHT}>
                 <div className={CONTAINER}>
-                    <h2 className={SECTION_TITLE}>Get involved</h2>
+                    <h2 className={SECTION_TITLE}><T>Get involved</T></h2>
                     <ul className={GRID_FOUR}>
                         {involvementOptions.map((option) => (
                             <li key={option.name}>
@@ -318,15 +322,15 @@ export default function WaysToHelp() {
             {/* Contact */}
             <section className={SECTION_DARK}>
                 <div className={CONTAINER}>
-                    <h2 className={SECTION_TITLE}>Questions about giving?</h2>
-                    <p className={BODY_DARK}>
+                    <h2 className={SECTION_TITLE}><T>Questions about giving?</T></h2>
+                    <p className={BODY_DARK}><T>
                         Contact Richard Creswell, Director of Advancement, at{" "}
                         <a href={ADVANCEMENT_EMAIL} className={INLINE_LINK_DARK}>
                             Richard@valanthropy.org
                         </a>
                         . VAlanthropy is a registered 501(c)(3) nonprofit, EIN {EIN}. Donations are
                         tax-deductible to the fullest extent allowed by law.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 

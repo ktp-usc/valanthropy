@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { parse, HTMLElement, type Node } from "node-html-parser";
 import Header from "@/components/header";
 import { renderInline, toHref } from "@/lib/wordpress";
-import { readContent } from "@/lib/content";
+import { contentSources } from "@/lib/content";
 
 /*
  * About page. The text lives in content/about.html (edit it there, in VS Code). It is parsed into
@@ -36,11 +36,16 @@ const FALLBACK: Section[] = [
 
 /* ---------- Fetch + parse ---------- */
 
+// Slug of the WordPress page that holds this page's text. Falls back to content/about.html.
+const WP_CONTENT_SLUG = "about-new";
+
 async function getSections(): Promise<{ sections: Section[]; fromWordPress: boolean }> {
     try {
-        const sections = parseSections(await readContent("about.html"));
-        if (sections.length === 0) throw new Error("No sections found in content");
-        return { sections, fromWordPress: true };
+        for (const html of await contentSources(WP_CONTENT_SLUG, "about.html")) {
+            const sections = parseSections(html);
+            if (sections.length > 0) return { sections, fromWordPress: true };
+        }
+        throw new Error("No sections found in content");
     } catch (error) {
         console.error("About page: falling back to static content.", error);
         return { sections: FALLBACK, fromWordPress: false };
@@ -101,6 +106,16 @@ function parseSections(html: string): Section[] {
         }
 
         flushRun();
+
+        if (tag === "div" && /wp-block-buttons/.test(el.getAttribute("class") ?? "")) {
+            // WordPress "Buttons" block -> row of link buttons
+            const links = el.querySelectorAll("a").map((a) => ({
+                href: toHref(a.getAttribute("href") ?? ""),
+                label: a.text.trim(),
+            }));
+            if (current && links.length > 0) current.blocks.push({ type: "links", links });
+            continue;
+        }
 
         if (tag === "h2") {
             current = { title: el.text.replace(/\s+/g, " ").trim(), blocks: [] };

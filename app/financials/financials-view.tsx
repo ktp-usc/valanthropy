@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> can be edited in the WordPress page "financials-new".
+const T = slotText("financials-new");
 
 // Add an `href` (e.g. "/financials/form-990-2025.pdf" in /public) once a document is approved for release.
 type Doc = { label: string; href?: string };
@@ -98,37 +102,37 @@ const sections: Section[] = [
 function DocLink({ doc, children }: { doc: Doc; children: React.ReactNode }) {
     if (!doc.href) {
         return (
-            <span title="Document coming soon" className="cursor-not-allowed opacity-60">
+            <span title="Document coming soon" className="cursor-not-allowed opacity-60"><T>
                 {children}
-            </span>
+            </T></span>
         );
     }
     return (
-        <a href={doc.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
+        <a href={doc.href} target="_blank" rel="noopener noreferrer" className="hover:underline"><T>
             {children}
-        </a>
+        </T></a>
     );
 }
 
 function IrsContent() {
     return (
         <div className="space-y-4 text-sm text-slate-600">
-            <p>
+            <p><T>
                 VAlanthropy is recognized as a tax-exempt nonprofit organization under Section
                 501(c)(3) of the Internal Revenue Code.
-            </p>
-            <p>
+            </T></p>
+            <p><T>
                 Contributions may be tax-deductible to the extent permitted by law. Donors should
                 consult their own tax or financial adviser regarding their individual
                 circumstances.
-            </p>
+            </T></p>
             <div className="rounded border border-slate-200 p-4">
-                <p className="mb-1 text-xs uppercase tracking-wide text-slate-500">EIN</p>
+                <p className="mb-1 text-xs uppercase tracking-wide text-slate-500"><T>EIN</T></p>
                 <p className="mb-3 text-xl font-bold text-slate-900">88-0840494</p>
                 <DocLink doc={{ label: "IRS Determination Letter" }}>
-                    <span className="font-semibold text-red-700">
+                    <span className="font-semibold text-red-700"><T>
                         IRS Determination Letter [ View/Download ]
-                    </span>
+                    </T></span>
                 </DocLink>
             </div>
         </div>
@@ -138,7 +142,7 @@ function IrsContent() {
 function GroupContent({ group }: { group: DocGroup }) {
     return (
         <div>
-            {group.heading && <h3 className="mb-3 text-sm font-bold">{group.heading}</h3>}
+            {group.heading && <h3 className="mb-3 text-sm font-bold"><T>{group.heading}</T></h3>}
             {group.asCards ? (
                 <ul className="grid gap-3 sm:grid-cols-2">
                     {group.docs.map((doc, i) => (
@@ -146,11 +150,11 @@ function GroupContent({ group }: { group: DocGroup }) {
                             key={i}
                             className="flex flex-col justify-between gap-2 rounded border border-slate-200 p-3"
                         >
-                            <span className="text-sm font-semibold">{doc.label}</span>
+                            <span className="text-sm font-semibold"><T>{doc.label}</T></span>
                             <DocLink doc={doc}>
-                                <span className="text-xs font-semibold text-red-700">
+                                <span className="text-xs font-semibold text-red-700"><T>
                                     [ View/Download PDF ]
-                                </span>
+                                </T></span>
                             </DocLink>
                         </li>
                     ))}
@@ -222,7 +226,7 @@ function SectionButtons({ items }: { items: Section[] }) {
                                 sizes="(min-width: 768px) 33vw, 100vw"
                                 className="object-cover opacity-40 grayscale transition group-hover:opacity-50"
                             />
-                            <h3 className="relative text-xl font-bold text-white">{s.title}</h3>
+                            <h3 className="relative text-xl font-bold text-white"><T>{s.title}</T></h3>
                         </button>
                     </SectionDialog>
                 </li>
@@ -239,19 +243,19 @@ export default function Financials() {
             {/* Hero */}
             <section className="bg-slate-900 px-8 py-16 text-white md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">About Us</p>
-                    <h1 className="mb-4 text-4xl font-bold leading-tight">Financial & Transparency</h1>
-                    <p className="mb-4 max-w-2xl text-sm">
+                    <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500"><T>About Us</T></p>
+                    <h1 className="mb-4 text-4xl font-bold leading-tight"><T>Financial & Transparency</T></h1>
+                    <p className="mb-4 max-w-2xl text-sm"><T>
                         VAlanthropy is committed to responsible stewardship, transparency, and
                         accountability. We believe donors, partners, grantmakers, and the communities
                         we serve should be able to understand how our organization is governed, how
                         charitable resources are managed, and how our work supports the development
                         of permanent affordable housing for veterans.
-                    </p>
-                    <p className="max-w-2xl text-sm text-slate-300">
+                    </T></p>
+                    <p className="max-w-2xl text-sm text-slate-300"><T>
                         This page provides access to selected financial, governance, and public
                         documents as they become available and are approved for public release.
-                    </p>
+                    </T></p>
                 </div>
             </section>
 
@@ -259,30 +263,30 @@ export default function Financials() {
             <section className="bg-white px-8 py-14 md:px-16">
                 <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
                     <div>
-                        <h2 className="mb-3 text-2xl font-bold">Financial Stewardship</h2>
-                        <p className="mb-3 text-sm text-slate-600">
+                        <h2 className="mb-3 text-2xl font-bold"><T>Financial Stewardship</T></h2>
+                        <p className="mb-3 text-sm text-slate-600"><T>
                             VAlanthropy works to manage charitable resources carefully and
                             responsibly. Financial decisions are made to advance our mission, support
                             the development of Hidden Wounds Village Alpha, maintain organizational
                             sustainability, and honor any donor restrictions formally accepted by the
                             organization.
-                        </p>
-                        <p className="text-sm text-slate-600">
+                        </T></p>
+                        <p className="text-sm text-slate-600"><T>
                             Financial figures related to construction, project commitments,
                             fundraising needs, and organizational operations are updated as verified
                             information becomes available.
-                        </p>
+                        </T></p>
                     </div>
                     <aside className="self-start rounded border-l-4 border-red-700 bg-slate-100 p-5">
-                        <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-red-700">
+                        <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-red-700"><T>
                             Note:
-                        </h3>
-                        <p className="text-sm text-slate-700">
+                        </T></h3>
+                        <p className="text-sm text-slate-700"><T>
                             Project budgets and funding figures may change as plans, permits,
                             construction costs, grants, pledges, and project requirements are
                             finalized. VAlanthropy publishes only figures that have been verified
                             through current organizational or board-approved records.
-                        </p>
+                        </T></p>
                     </aside>
                 </div>
             </section>
@@ -290,12 +294,12 @@ export default function Financials() {
             {/* Section buttons */}
             <section className="bg-white px-8 pb-14 md:px-16">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-6 text-2xl font-bold text-red-700">Internal Statements</h2>
+                    <h2 className="mb-6 text-2xl font-bold text-red-700"><T>Internal Statements</T></h2>
                     <SectionButtons items={internalSections} />
 
-                    <h2 className="mb-6 mt-14 text-2xl font-bold text-red-700">
+                    <h2 className="mb-6 mt-14 text-2xl font-bold text-red-700"><T>
                         Governance and Corporate Policies
-                    </h2>
+                    </T></h2>
                     <SectionButtons items={policySections} />
                 </div>
             </section>
@@ -303,26 +307,26 @@ export default function Financials() {
             {/* Request documents */}
             <section className="bg-slate-900 px-8 py-14 text-center text-white md:px-16">
                 <div className="mx-auto max-w-2xl">
-                    <p className="mb-2 text-sm">
+                    <p className="mb-2 text-sm"><T>
                         If you are looking for a VAlanthropy financial or organizational document
                         that is not currently posted, please contact us.
-                    </p>
-                    <p className="mb-6 text-sm text-slate-300">
+                    </T></p>
+                    <p className="mb-6 text-sm text-slate-300"><T>
                         We will respond to reasonable requests for documents required to be publicly
                         available or approved for public release.
-                    </p>
+                    </T></p>
                     <Link
                         href="/contact"
                         className="inline-block rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white"
-                    >
+                    ><T>
                         Contact Us
-                    </Link>
+                    </T></Link>
                 </div>
             </section>
 
             {/* Notice */}
             <section className="bg-white px-8 py-10 md:px-16">
-                <p className="mx-auto max-w-5xl text-xs text-slate-500">
+                <p className="mx-auto max-w-5xl text-xs text-slate-500"><T>
                     <span className="font-semibold text-slate-700">
                         Financial Information Notice:
                     </span>{" "}
@@ -340,7 +344,7 @@ export default function Financials() {
                         1-833 SALUTEU [725-8388]
                     </a>
                     .
-                </p>
+                </T></p>
             </section>
         </div>
     );
