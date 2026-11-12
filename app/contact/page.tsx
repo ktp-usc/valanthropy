@@ -49,8 +49,8 @@ export default function Contact() {
             </section>
 
             {/* Contact options */}
-            <section className="bg-white px-4 py-14 md:px-8">
-                <div className="mx-auto max-w-7xl">
+            <section className="bg-white px-4 py-14 md:px-16">
+                <div className="mx-auto max-w-5xl">
                     <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
                     <p className="mb-6 text-sm text-slate-600">
                         Choose the option that best fits your needs.
