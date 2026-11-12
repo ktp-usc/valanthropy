@@ -1,5 +1,4 @@
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import ProjectProgress from "@/components/project-progress";
 
 // Layout
@@ -31,8 +30,6 @@ export default function ProjectsPage() {
 
             {/* Progress */}
             <ProjectProgress />
-
-            <Footer />
         </div>
     );
 }
