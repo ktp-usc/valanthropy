@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/header";
-import { slotText } from "@/lib/wp-text";
+import ProjectProgress from "@/components/project-progress";
 
-// Text wrapped in <T> can be edited in the WordPress page "projects-new".
-const T = slotText("projects-new");
 export const metadata: Metadata = {
-    title: "projects | VAlanthropy",
+    title: "Projects | VAlanthropy",
     description:
         "Learn about Hidden Wounds Village Alpha, VAlanthropy's flagship veteran housing initiative.",
 };
@@ -22,8 +20,7 @@ const HERO_COLUMNS = "grid items-center gap-4 md:grid-cols-2";
 const THREE_COLUMNS = "grid gap-4 sm:grid-cols-2 md:grid-cols-3";
 
 // Typography
-const EYEBROW =
-    "mb-4 text-[16px] uppercase tracking-wide text-red-500";
+const EYEBROW = "mb-4 text-[16px] uppercase tracking-wide text-red-500";
 const PAGE_TITLE = "text-4xl font-bold";
 const SECTION_HEADING = "mb-6 text-2xl font-bold";
 const BODY = "text-sm leading-relaxed text-slate-600";
@@ -38,14 +35,7 @@ const DONATE_BUTTON =
 // Overview
 const BENEFIT_LIST = "space-y-4 text-sm font-semibold";
 const BENEFIT_ITEM = "flex items-start gap-3";
-const BENEFIT_DOT =
-    "mt-1 h-3 w-3 shrink-0 rounded-full bg-red-700";
-
-// Progress
-const PROGRESS_INTRO = "mb-6 max-w-3xl text-sm leading-relaxed";
-const PROGRESS_CARD = "h-full rounded border border-white/30 p-4 text-center";
-const MILESTONE_NUMBER = "mb-2 text-xs font-semibold text-red-300";
-const DARK_CARD_TITLE = "mb-2 text-sm font-semibold";
+const BENEFIT_DOT = "mt-1 h-3 w-3 shrink-0 rounded-full bg-red-700";
 
 // Illustration
 const ILLUSTRATION =
@@ -71,13 +61,6 @@ type Benefit = {
     text: string;
 };
 
-type Milestone = {
-    id: string;
-    number: string;
-    title: string;
-    description: string;
-};
-
 type Impact = {
     id: string;
     title: string;
@@ -85,39 +68,9 @@ type Impact = {
 };
 
 const BENEFITS: Benefit[] = [
-    {
-        id: "housing",
-        text: "Permanent affordable housing",
-    },
-    {
-        id: "community",
-        text: "Veteran-focused community",
-    },
-    {
-        id: "independence",
-        text: "Support for long-term independence",
-    },
-];
-
-const MILESTONES: Milestone[] = [
-    {
-        id: "infrastructure",
-        number: "01",
-        title: "Infrastructure",
-        description: "Curbs, retention pond, grading",
-    },
-    {
-        id: "planning",
-        number: "02",
-        title: "Planning",
-        description: "Finalizing building plans",
-    },
-    {
-        id: "construction",
-        number: "03",
-        title: "Construction",
-        description: "Preparing for the next phase",
-    },
+    { id: "housing", text: "Permanent affordable housing" },
+    { id: "community", text: "Veteran-focused community" },
+    { id: "independence", text: "Support for long-term independence" },
 ];
 
 const IMPACTS: Impact[] = [
@@ -144,54 +97,36 @@ const IMPACTS: Impact[] = [
 export default function ProjectsPage() {
     return (
         <div className={PAGE}>
-            {/* Shared navigation */}
-            <Header/>
+            <Header active="/projects" />
 
             <main>
                 {/* Hero */}
-                <section
-                    aria-labelledby="project-title"
-                    className={HERO}
-                >
+                <section aria-labelledby="project-title" className={HERO}>
                     <div className={CONTAINER}>
                         <div className={HERO_COLUMNS}>
                             <div>
-                                <p className={EYEBROW}><T>Projects</T></p>
-
-                                <h1
-                                    id="project-title"
-                                    className={PAGE_TITLE}
-                                ><T>
+                                <p className={EYEBROW}>Projects</p>
+                                <h1 id="project-title" className={PAGE_TITLE}>
                                     Hidden Wounds Village Alpha
-                                </T></h1>
-
-                                <p className={HERO_BODY}><T>
+                                </h1>
+                                <p className={HERO_BODY}>
                                     Flagship project | Sumter, South Carolina
-                                </T></p>
-
-                                <p className={HERO_BODY}><T>
+                                </p>
+                                <p className={HERO_BODY}>
                                     Permanent, affordable housing designed to
                                     help veterans build stability,
                                     independence, and a stronger future.
-                                </T></p>
-
-                                <Link
-                                    href="/donate"
-                                    className={DONATE_BUTTON}
-                                ><T>
+                                </p>
+                                <Link href="/donate" className={DONATE_BUTTON}>
                                     Help Build the Village
-                                </T></Link>
+                                </Link>
                             </div>
 
                             {/* Decorative project illustration */}
-                            <div
-                                aria-hidden="true"
-                                className={ILLUSTRATION}
-                            >
-                                <p className={ILLUSTRATION_LABEL}><T>
+                            <div aria-hidden="true" className={ILLUSTRATION}>
+                                <p className={ILLUSTRATION_LABEL}>
                                     Village Alpha project rendering
-                                </T></p>
-
+                                </p>
                                 <div className={ILLUSTRATION_CIRCLE} />
                                 <div className={ILLUSTRATION_GROUND} />
                                 <div className={ILLUSTRATION_BASE} />
@@ -213,11 +148,10 @@ export default function ProjectsPage() {
                                 <h2
                                     id="foundation-title"
                                     className={SECTION_HEADING}
-                                ><T>
+                                >
                                     A foundation for long-term stability
-                                </T></h2>
-
-                                <p className={BODY}><T>
+                                </h2>
+                                <p className={BODY}>
                                     Hidden Wounds Village Alpha is
                                     VAlanthropy’s flagship veteran housing
                                     initiative. It is designed to connect
@@ -225,9 +159,8 @@ export default function ProjectsPage() {
                                     support, employment transition resources,
                                     community reintegration, and outcome
                                     tracking.
-                                </T></p>
+                                </p>
                             </div>
-
                             <ul className={BENEFIT_LIST}>
                                 {BENEFITS.map((benefit) => (
                                     <li
@@ -247,46 +180,7 @@ export default function ProjectsPage() {
                 </section>
 
                 {/* Project progress */}
-                <section
-                    aria-labelledby="progress-title"
-                    className={DARK_SECTION}
-                >
-                    <div className={CONTAINER}>
-                        <h2
-                            id="progress-title"
-                            className={SECTION_HEADING}
-                        ><T>
-                            Progress is already underway
-                        </T></h2>
-
-                        <p className={PROGRESS_INTRO}><T>
-                            Important groundwork is complete. The current
-                            focus is finalizing the building plans that will
-                            guide the next phase of construction.
-                        </T></p>
-
-                        <ol className={THREE_COLUMNS}>
-                            {MILESTONES.map((milestone) => (
-                                <li
-                                    key={milestone.id}
-                                    className={PROGRESS_CARD}
-                                >
-                                    <p className={MILESTONE_NUMBER}><T>
-                                        {milestone.number}
-                                    </T></p>
-
-                                    <h3 className={DARK_CARD_TITLE}><T>
-                                        {milestone.title}
-                                    </T></h3>
-
-                                    <p className={DARK_BODY}><T>
-                                        {milestone.description}
-                                    </T></p>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                </section>
+                <ProjectProgress />
 
                 {/* Project impact */}
                 <section
@@ -294,23 +188,16 @@ export default function ProjectsPage() {
                     className={LIGHT_SECTION}
                 >
                     <div className={CONTAINER}>
-                        <h2
-                            id="impact-title"
-                            className={SECTION_HEADING}
-                        ><T>
+                        <h2 id="impact-title" className={SECTION_HEADING}>
                             Veterans deserve more than temporary solutions.
-                        </T></h2>
-
+                        </h2>
                         <ul className={THREE_COLUMNS}>
                             {IMPACTS.map((impact) => (
                                 <li key={impact.id}>
-                                    <h3 className={LIGHT_CARD_TITLE}><T>
+                                    <h3 className={LIGHT_CARD_TITLE}>
                                         {impact.title}
-                                    </T></h3>
-
-                                    <p className={BODY}><T>
-                                        {impact.description}
-                                    </T></p>
+                                    </h3>
+                                    <p className={BODY}>{impact.description}</p>
                                 </li>
                             ))}
                         </ul>
@@ -323,24 +210,16 @@ export default function ProjectsPage() {
                     className={DARK_SECTION}
                 >
                     <div className={SUPPORT_CONTENT}>
-                        <h2
-                            id="support-title"
-                            className={SECTION_HEADING}
-                        ><T>
+                        <h2 id="support-title" className={SECTION_HEADING}>
                             Be part of what comes next.
-                        </T></h2>
-
-                        <p className={DARK_BODY}><T>
+                        </h2>
+                        <p className={DARK_BODY}>
                             Your donation, sponsorship, or shared connection
                             helps move the village forward.
-                        </T></p>
-
-                        <Link
-                            href="/donate"
-                            className={DONATE_BUTTON}
-                        ><T>
+                        </p>
+                        <Link href="/donate" className={DONATE_BUTTON}>
                             Help Build the Village
-                        </T></Link>
+                        </Link>
                     </div>
                 </section>
             </main>
