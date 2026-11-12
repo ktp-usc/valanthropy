@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 const values = [
     {
@@ -116,7 +115,6 @@ export default function About() {
                     Help Build the Village
                 </Link>
             </section>
-            <Footer />
         </div>
     );
 }

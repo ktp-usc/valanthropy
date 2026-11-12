@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 // Layout
 const PAGE = "bg-white text-slate-900";
 const CONTAINER = "mx-auto max-w-5xl";
@@ -304,8 +302,6 @@ export default function Home() {
                     </div>
                 </section>
             </main>
-
-            <Footer />
         </div>
     );
 }

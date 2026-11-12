@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 type Person = {
   name: string;
@@ -151,7 +150,6 @@ export default function Leadership() {
           </ul>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }
