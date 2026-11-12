@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 export const metadata: Metadata = {
     title: "projects | VAlanthropy",
     description:
@@ -41,9 +39,8 @@ const BENEFIT_DOT =
 
 // Progress
 const PROGRESS_INTRO = "mb-6 max-w-3xl text-sm leading-relaxed";
-const PROGRESS_CARD =
-    "h-full rounded border border-white/30 p-4 text-center";
-const MILESTONE_NUMBER = "mb-2 text-xs font-semibold text-red-400";
+const PROGRESS_CARD = "h-full rounded border border-white/30 p-4 text-center";
+const MILESTONE_NUMBER = "mb-2 text-xs font-semibold text-red-300";
 const DARK_CARD_TITLE = "mb-2 text-sm font-semibold";
 
 // Illustration
@@ -342,7 +339,6 @@ export default function ProjectsPage() {
                         </Link>
                     </div>
                 </section>
-                <Footer/>
             </main>
         </div>
     );
