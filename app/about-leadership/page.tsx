@@ -61,10 +61,30 @@ const DIALOG_CLOSE =
   "min-h-11 w-full cursor-pointer rounded bg-red-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700";
 
 const leaders: Person[] = [
-  { name: "Francis W. Altman, Jr.", title: "Founder, Chief Executive Officer", image: "/about-leadership/francis-w-altman-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Thomas L. Lash", title: "Founder, President", image: "/about-leadership/thomas-lash-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Richard Creswell", title: "Director of Advancement", image: "/about-leadership/richard-caswell-valanthropy.png", bio: PLACEHOLDER_BIO },
-  { name: "Lilly Ellen Williams", title: "Comunications Director", image: "/about-leadership/lilly-ellen-williams-valanthropy.png", bio: PLACEHOLDER_BIO },
+  {
+    name: "Francis “Fred” Altman",
+    title: "Co-founder",
+    image: "/about-leadership/francis-w-altman-valanthropy.png",
+    bio: "Francis “Fred” Altman is a co-founder of VAlanthropy, a South Carolina nonprofit dedicated to developing permanent, affordable housing for veterans experiencing housing instability. His commitment begins with a belief that those who have served deserve a secure home and the opportunity to live with dignity and independence.\n\nFred helps guide the organization’s mission, development, and strategic partnerships, with a focus on housing solutions that meet veterans’ long-term needs. He is helping advance Hidden Wounds Village Alpha, VAlanthropy’s inaugural development in Sumter, South Carolina, planned to provide 12 permanent homes with access to supportive services through community partners.\n\nLooking beyond the first development, Fred envisions a sustainable model that other South Carolina communities can adopt. His work reflects a lasting dedication to honoring military service through practical action and helping veterans build stable futures.",
+  },
+  {
+    name: "Thomas “Tom” Lash",
+    title: "Co-founder",
+    image: "/about-leadership/thomas-lash-valanthropy.png",
+    bio: "Thomas “Tom” Lash is a co-founder of VAlanthropy, where he helps build the community relationships that support permanent, affordable housing for veterans. He believes that honoring military service includes a lasting commitment to veterans’ well-being and their sense of belonging after service.\n\nTom engages community leaders, businesses, and nonprofit partners to connect VAlanthropy’s mission with people and resources that can help bring it to life. He is actively involved in advancing Hidden Wounds Village Alpha, the organization’s planned 12-home veteran housing community in Sumter, South Carolina.\n\nFor Tom, a secure home is a foundation for independence and meaningful connections. Through advocacy and continued community engagement, he works to strengthen the partnerships that make sustainable housing possible. His dedication centers on bringing people together around a shared responsibility to help veterans find lasting stability and a supportive community.",
+  },
+  {
+    name: "Richard Creswell",
+    title: "Director of Advancement",
+    image: "/about-leadership/richard-caswell-valanthropy.png",
+    bio: "Richard Creswell serves as Director of Advancement for VAlanthropy, leading its funding strategy and advancement efforts. With more than two decades of experience strengthening nonprofit organizations, he brings expertise in donor development, board engagement, strategic planning, and sustainable funding.\n\nRichard helps organizations build lasting donor relationships and connect their missions with partners who share their goals. At VAlanthropy, he applies that experience to advancing Hidden Wounds Village Alpha and developing support for permanent, affordable veteran housing. His approach brings nonprofit and business communities together around partnerships that serve the mission and create shared value.\n\nRichard’s commitment to service also shapes his life with his wife and their four children. Grounded in their Christian faith, they seek to live with intention, humility, and grace. He brings those values to his work, helping strengthen the relationships and resources that support VAlanthropy’s long-term mission.",
+  },
+  {
+    name: "Lilly Williams",
+    title: "Marketing and Community Outreach Director",
+    image: "/about-leadership/lilly-ellen-williams-valanthropy.png",
+    bio: "Lilly Williams serves as Marketing and Community Outreach Director for VAlanthropy, bringing more than 15 years of experience in graphic design, branding, marketing, and business communications. As the founder of Lilly Ellen LLC, a creative design and print studio, she helps organizations communicate clearly and connect with their communities.\n\nHer dedication to veterans is personal. As the wife of a retired United States Air Force service member who served more than 20 years, including multiple deployments, Lilly understands the sacrifices military service asks of veterans and their families.\n\nAt VAlanthropy, she leads marketing, outreach, and digital engagement while supporting fundraising campaigns and sponsorship materials. Her work helps donors, businesses, and community partners understand the mission and find ways to contribute. Through Hidden Wounds Village Alpha, Lilly is committed to helping veterans gain permanent housing and feel valued long after their service ends.",
+  },
 ];
 
 const directors: Person[] = [
@@ -102,7 +122,13 @@ function BioDialog({ person, children }: { person: Person; children: React.React
             <Dialog.Description className={DIALOG_DESCRIPTION}>
               {person.title}
             </Dialog.Description>
-            <p className={DIALOG_BIO}>{person.bio}</p>
+            <div className={DIALOG_BIO}>
+              {person.bio.split("\n\n").map((paragraph, index) => (
+                <p key={index} className={index > 0 ? "mt-3" : undefined}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
           <div className="shrink-0 border-t border-slate-200 px-5 py-3 sm:px-6">
             <Dialog.Close className={DIALOG_CLOSE}>Close</Dialog.Close>
