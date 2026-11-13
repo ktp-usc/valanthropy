@@ -16,16 +16,25 @@ type AboutContent = {
     values: Value[];
 };
 
-const CONTAINER = "mx-auto max-w-5xl";
-const HERO =
-    "bg-slate-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-16";
-const LIGHT_SECTION =
-    "bg-white px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14";
-const DARK_SECTION =
-    "bg-blue-900 px-4 py-10 text-white sm:px-8 sm:py-12 md:px-16 md:py-14";
-const BODY = "text-sm leading-7 text-slate-600";
+// Layout
+const CONTAINER =
+    "mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12";
+const SECTION = "py-12 md:py-16";
+const TWO_COLUMNS =
+    "grid items-start gap-8 md:grid-cols-2 md:gap-14";
+
+// Typography
+const EYEBROW =
+    "mb-4 text-xs font-semibold uppercase tracking-widest text-red-700";
+const PAGE_TITLE =
+    "mb-5 max-w-4xl font-heading text-4xl font-normal leading-tight tracking-tight text-white md:text-5xl";
+const SECTION_TITLE =
+    "font-heading text-3xl font-normal leading-tight tracking-tight text-slate-900 md:text-4xl";
+const BODY =
+    "text-base font-normal leading-7 text-slate-700 md:text-lg md:leading-8";
+
 const BUTTON =
-    "inline-flex min-h-11 max-w-full items-center justify-center rounded bg-red-700 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 sm:px-8 sm:text-xs";
+    "inline-flex min-h-14 max-w-full items-center justify-center rounded bg-red-700 px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
 
 const FALLBACK: AboutContent = {
     title: "About VAlanthropy",
@@ -61,10 +70,6 @@ function normalize(text: string): string {
     return clean(text).toLowerCase();
 }
 
-/**
- * Read paragraphs immediately following a heading.
- * Images are skipped; the next heading ends the text group.
- */
 function paragraphsAfter(heading?: HTMLElement): string[] {
     if (!heading?.parentNode) return [];
 
@@ -108,12 +113,19 @@ function parseAbout(html: string): AboutContent | null {
         "our values",
     );
 
+    if (
+        !overviewHeading &&
+        !missionHeading &&
+        !storyHeading &&
+        !valuesHeading
+    ) {
+        return null;
+    }
+
     const mission = paragraphsAfter(missionHeading);
 
-    // The existing WordPress page has an overview rather than
-    // a separate Story section. Use that until a Story heading exists.
+    // Use the overview when WordPress has no separate Story section.
     const story = paragraphsAfter(storyHeading ?? overviewHeading);
-
     const values: Value[] = [];
 
     if (valuesHeading) {
@@ -157,10 +169,7 @@ async function getAboutContent(): Promise<AboutContent> {
             if (content) return content;
         }
     } catch (error) {
-        console.error(
-            "About page: using fallback content.",
-            error,
-        );
+        console.error("About page: using fallback content.", error);
     }
 
     return FALLBACK;
@@ -170,30 +179,30 @@ export default async function About() {
     const content = await getAboutContent();
 
     return (
-        <div className="bg-white text-slate-900">
+        <div className="bg-white font-sans text-slate-900">
             <Header active="/about" />
 
             <main>
                 {/* Hero */}
-                <section className={HERO}>
+                <section className="bg-slate-900 py-12 md:py-16">
                     <div className={CONTAINER}>
-                        <p className="mb-4 text-[10px] uppercase tracking-wide text-red-500">
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-red-300">
                             About Us | South Carolina
                         </p>
 
-                        <h1 className="mb-4 text-3xl font-bold leading-tight sm:text-4xl">
+                        <h1 className={PAGE_TITLE}>
                             {content.title}
                         </h1>
 
-                        <p className="mb-4 text-2xl font-bold leading-tight sm:text-4xl">
+                        <p className="max-w-prose text-base leading-7 text-slate-200 md:text-lg md:leading-8">
                             Building hope, one home at a time. We help
-                            veterans build stability, independence,
-                            and a stronger future.
+                            veterans build stability, independence, and
+                            a stronger future.
                         </p>
 
                         <Link
                             href="/leadership"
-                            className={`${BUTTON} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
+                            className={`${BUTTON} mt-8 focus-visible:outline-white`}
                         >
                             Meet Our Leadership
                         </Link>
@@ -201,11 +210,11 @@ export default async function About() {
                 </section>
 
                 {/* Mission */}
-                <section className={LIGHT_SECTION}>
-                    <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+                <section className={`bg-white ${SECTION}`}>
+                    <div className={`${CONTAINER} ${TWO_COLUMNS}`}>
                         <div>
-                            <h2 className="mb-3 text-2xl font-bold">
-                                Our mission
+                            <h2 className={`mb-6 ${SECTION_TITLE}`}>
+                                Our Mission
                             </h2>
 
                             <div className="space-y-4">
@@ -217,17 +226,17 @@ export default async function About() {
                             </div>
                         </div>
 
-                        <ul className="space-y-3 text-sm font-semibold">
+                        <ul className="space-y-5 border-l-4 border-red-700 pl-6 text-base font-semibold leading-7 text-slate-900 md:text-lg">
                             {highlights.map((item) => (
                                 <li
                                     key={item}
-                                    className="flex items-center gap-3"
+                                    className="flex items-start gap-3"
                                 >
                                     <span
                                         aria-hidden="true"
-                                        className="h-2 w-2 shrink-0 rounded-full bg-red-700"
+                                        className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-red-700"
                                     />
-                                    {item}
+                                    <span>{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -235,10 +244,12 @@ export default async function About() {
                 </section>
 
                 {/* Story */}
-                <section className={LIGHT_SECTION}>
+                <section className={`bg-slate-50 ${SECTION}`}>
                     <div className={CONTAINER}>
-                        <h2 className="mb-2 text-2xl font-bold">
-                            Our story
+                        <p className={EYEBROW}>Our purpose</p>
+
+                        <h2 className={`mb-6 ${SECTION_TITLE}`}>
+                            Our Story
                         </h2>
 
                         <div className="max-w-3xl space-y-4">
@@ -252,45 +263,50 @@ export default async function About() {
                 </section>
 
                 {/* Values */}
-                <section className={DARK_SECTION}>
+                <section className={`bg-slate-900 text-white ${SECTION}`}>
                     <div className={CONTAINER}>
-                        <h2 className="mb-6 text-2xl font-bold">
+                        <h2 className="mb-8 font-heading text-3xl font-normal leading-tight tracking-tight md:text-4xl">
                             What we believe
                         </h2>
 
-                        <div className="grid gap-6 md:grid-cols-3">
+                        <ul className="grid gap-8 md:grid-cols-3 md:gap-10">
                             {content.values.map((value) => (
-                                <div key={value.title}>
-                                    <h3 className="mb-1 text-sm font-semibold text-red-400">
+                                <li
+                                    key={value.title}
+                                    className="border-t border-white/25 pt-6"
+                                >
+                                    <h3 className="mb-3 font-sans text-xl font-semibold leading-snug text-red-300">
                                         {value.title}
                                     </h3>
 
-                                    <p className="text-sm leading-7">
+                                    <p className="text-base leading-7 text-slate-200 md:text-lg md:leading-8">
                                         {value.desc}
                                     </p>
-                                </div>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
                 </section>
 
                 {/* CTA */}
-                <section className="bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:py-16">
-                    <h2 className="mb-2 text-2xl font-bold">
-                        Be part of what comes next.
-                    </h2>
+                <section className={`bg-white text-center ${SECTION}`}>
+                    <div className={CONTAINER}>
+                        <h2 className={`mb-6 ${SECTION_TITLE}`}>
+                            Be part of what comes next.
+                        </h2>
 
-                    <p className="mb-6 text-sm leading-7 text-slate-600">
-                        Your donation, sponsorship, or shared
-                        connection helps move the village forward.
-                    </p>
+                        <p className={`mx-auto max-w-prose ${BODY}`}>
+                            Your donation, sponsorship, or shared
+                            connection helps move the village forward.
+                        </p>
 
-                    <Link
-                        href="/ways-to-help"
-                        className={`${BUTTON} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700`}
-                    >
-                        Help Build the Village
-                    </Link>
+                        <Link
+                            href="/ways-to-help"
+                            className={`${BUTTON} mt-8 focus-visible:outline-red-700`}
+                        >
+                            Help Build the Village
+                        </Link>
+                    </div>
                 </section>
             </main>
         </div>
