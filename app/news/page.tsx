@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Header from "@/components/header";
 
@@ -15,6 +14,9 @@ export const metadata: Metadata = {
  * If WordPress can't be reached, FALLBACK_POSTS is shown instead. "Read more" opens the full story
  * on valanthropy.org.
  */
+
+// Same newsletter signup form that "Stay in Touch" uses on the Contact page.
+const NEWSLETTER_SIGNUP_URL = "https://valanthropy.dm.networkforgood.com/forms/subscibe-for-updates";
 
 const WP_ORIGIN = "https://valanthropy.org";
 const REVALIDATE_SECONDS = 300;
@@ -317,13 +319,15 @@ export default async function NewsPage() {
                             sustainable opportunities that empower veterans to thrive.
                         </p>
                     </div>
-                    <Link
-                        href="/start-a-conversation"
+                    <a
+                        href={NEWSLETTER_SIGNUP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="mt-8 inline-flex items-center justify-center gap-3 rounded bg-red-700 px-8 py-3 text-xs font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400"
                     >
-                        Start a Conversation
+                        Sign Up for Updates
                         <ArrowUpRight size={16} aria-hidden="true" />
-                    </Link>
+                    </a>
                 </div>
             </section>
         </div>
