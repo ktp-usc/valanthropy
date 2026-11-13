@@ -41,39 +41,78 @@ const FALLBACK: PeopleSection[] = [
 // A paragraph that looks like a job title (used to tell names and titles apart when there is no photo).
 const TITLE_WORDS = /director|officer|president|founder|chair|advis|treasurer|secretary|member|manager|lead/i;
 
-function parsePeople(nodes: import("node-html-parser").Node[]): Person[] {
+function parsePeople(
+  nodes: import("node-html-parser").Node[],
+): Person[] {
   const people: (Person & { fromPhoto: boolean })[] = [];
   const titleLines: string[][] = [];
 
   for (const node of nodes) {
     if (!(node instanceof HTMLElement)) continue;
+
     const tag = node.tagName.toLowerCase();
     const last = people[people.length - 1];
 
+    // Biography blocks belong to the person immediately above them.
+    if (node.hasAttribute("data-bio")) {
+      if (last) {
+        const paragraphs = node.querySelectorAll("p");
+        const lines = paragraphs.length
+          ? paragraphs.map((p) => clean(p.text))
+          : [clean(node.text)];
+
+        last.bio =
+          lines.filter(Boolean).join("\n\n") || PLACEHOLDER_BIO;
+      }
+      continue;
+    }
+
     if (tag === "figure") {
       const img = node.querySelector("img");
-      const name = clean(node.querySelector("figcaption")?.text ?? img?.getAttribute("alt") ?? "");
+      const name = clean(
+        node.querySelector("figcaption")?.text ??
+          img?.getAttribute("alt") ??
+          "",
+      );
+
       if (!name) continue;
-      people.push({ name, title: "", bio: PLACEHOLDER_BIO, image: img?.getAttribute("src") ?? undefined, fromPhoto: true });
+
+      people.push({
+        name,
+        title: "",
+        bio: PLACEHOLDER_BIO,
+        image: img?.getAttribute("src") ?? undefined,
+        fromPhoto: true,
+      });
       titleLines.push([]);
     } else if (tag === "p") {
       const text = clean(node.text);
       if (!text) continue;
-      // Lines after a photo are always titles; without a photo, a title-like line follows a name.
-      if (last && (last.fromPhoto || (TITLE_WORDS.test(text) && titleLines[titleLines.length - 1].length === 0))) {
+
+      if (
+        last &&
+        (last.fromPhoto ||
+          (TITLE_WORDS.test(text) &&
+            titleLines[titleLines.length - 1].length === 0))
+      ) {
         titleLines[titleLines.length - 1].push(text);
       } else {
-        people.push({ name: text, title: "", bio: PLACEHOLDER_BIO, fromPhoto: false });
+        people.push({
+          name: text,
+          title: "",
+          bio: PLACEHOLDER_BIO,
+          fromPhoto: false,
+        });
         titleLines.push([]);
       }
     }
   }
 
-  return people.map((p, i) => ({
-    name: p.name,
+  return people.map((person, i) => ({
+    name: person.name,
     title: titleLines[i].join(", "),
-    bio: p.bio,
-    image: p.image,
+    bio: person.bio,
+    image: person.image,
   }));
 }
 
