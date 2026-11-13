@@ -53,7 +53,7 @@ export default function About() {
                 <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
                     <div>
                         <h2 className="mb-3 text-2xl font-bold">Our mission</h2>
-                        <p className="text-sm text-slate-600 md:text-xs">
+                        <p className="text-sm text-slate-600 ">
                             Write your mission statement here. Explain who VAlanthropy is, why it
                             was founded, and who it serves.
                         </p>
@@ -77,7 +77,7 @@ export default function About() {
             <section className="px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-2 text-2xl font-bold">Our story</h2>
-                    <p className="max-w-md text-sm text-slate-600 md:text-xs">
+                    <p className="max-w-md text-sm text-slate-600 ">
                         Write a short history of the organization here: how it started, what has
                         been accomplished, and where it is headed.
                     </p>
@@ -94,7 +94,7 @@ export default function About() {
                                 <h3 className="mb-1 text-xs font-semibold text-red-400">
                                     {v.title}
                                 </h3>
-                                <p className="text-sm md:text-xs">{v.desc}</p>
+                                <p className="text-sm ">{v.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -104,7 +104,7 @@ export default function About() {
             {/* CTA */}
             <section className="bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:py-16">
                 <h2 className="mb-2 text-2xl font-bold">Be part of what comes next.</h2>
-                <p className="mb-6 text-sm text-slate-600 md:text-xs">
+                <p className="mb-6 text-sm text-slate-600 ">
                     Your donation, sponsorship, or shared connection helps move the village
                     forward.
                 </p>
