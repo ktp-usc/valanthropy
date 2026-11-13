@@ -273,7 +273,7 @@ export default function Contact() {
             <section className="bg-slate-100 px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-4 text-2xl font-bold text-red-700">
-                        Privacy & Response Notice
+                        Privacy &amp; Response Notice
                     </h2>
                     <div className="max-w-2xl space-y-3 text-sm text-slate-600">
                         <p>
