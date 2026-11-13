@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 // Add an `href` (e.g. "/financials/form-990-2025.pdf" in /public) once a document is approved for release.
 type Doc = { label: string; href?: string };
@@ -21,27 +20,31 @@ type Section = {
 
 const BUTTON_IMAGE = "/financials/village.png";
 
+// Four reporting years of documents, newest first. To publish one, add the PDF to /public/financials/,
+// then fill in the year and its path, e.g. { year: "2025", form990: "/financials/2025-form-990.pdf" }.
+// Post only the public copy of Form 990 (no Schedule B donor names or addresses).
+type ReportingYear = {
+    year?: string;
+    financialStatements?: string;
+    form990?: string;
+    annualBudget?: string;
+};
+
+const reportingYears: ReportingYear[] = [{}, {}, {}, {}];
+
 const sections: Section[] = [
     {
         title: "VAlanthropy Statements",
         summary: "Financial statements, Form 990, and annual budgets.",
-        groups: [
-            {
-                heading: "Financial Statements",
-                asCards: true,
-                docs: [
-                    { label: "Financial Statements" },
-                    { label: "Form 990" },
-                    { label: "Financial Statements" },
-                    { label: "Form 990" },
-                ],
-            },
-            {
-                heading: "Annual Budgets",
-                asCards: true,
-                docs: [{ label: "YEAR Annual Budget" }, { label: "YEAR Annual Budget" }],
-            },
-        ],
+        groups: reportingYears.map((y, i) => ({
+            heading: y.year ? `${y.year} reporting year` : `Reporting year ${i + 1} (year coming soon)`,
+            asCards: true,
+            docs: [
+                { label: "Financial Statements", href: y.financialStatements },
+                { label: "Form 990", href: y.form990 },
+                { label: "Annual Budget", href: y.annualBudget },
+            ],
+        })),
     },
     {
         title: "Donor & Giving Policies",
@@ -339,7 +342,6 @@ export default function Financials() {
                     .
                 </p>
             </section>
-            <Footer />
         </div>
     );
 }

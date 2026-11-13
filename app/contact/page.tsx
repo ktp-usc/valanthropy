@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 const EMAIL = "info@valanthropy.org";
+const NEWSLETTER_SIGNUP_URL = "https://valanthropy.dm.networkforgood.com/forms/subscibe-for-updates";
 
 const mailto = (subject: string) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
 
@@ -12,13 +11,13 @@ const options = [
         title: "General Contact",
         desc: "Have questions about VAlanthropy, Hidden Wounds Village Alpha, donations, sponsorships, partnerships, events, or our mission?",
         cta: "General Contact Form",
-        href: "/start-a-conversation",
+        href: "https://valanthropy.dm.networkforgood.com/forms/general-contact-form",
     },
     {
         title: "Stay in Touch",
         desc: "Receive project updates, newsletters, event announcements, volunteer opportunities, and ways to support Hidden Wounds Village Alpha.",
         cta: "Stay in Touch",
-        href: mailto("Stay in touch"),
+        href: NEWSLETTER_SIGNUP_URL,
     },
     {
         title: "Request a Speaker",
@@ -29,7 +28,11 @@ const options = [
 ];
 
 const optionButtonClass =
+<<<<<<< HEAD
     "inline-flex min-h-11 w-full max-w-full items-center justify-center rounded bg-red-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 sm:px-8 md:w-auto md:px-14 md:py-5 md:text-base";
+=======
+    "inline-flex h-20 w-full items-center justify-center rounded bg-red-700 px-4 text-center text-base font-semibold text-white md:w-60";
+>>>>>>> 6fdf4a32bca2b5dc4c6c63967a8e8a33587ff3fa
 
 export default function Contact() {
     return (
@@ -51,8 +54,13 @@ export default function Contact() {
             </section>
 
             {/* Contact options */}
+<<<<<<< HEAD
             <section className="bg-white px-4 py-10 sm:px-8 sm:py-12 md:py-14">
                 <div className="mx-auto max-w-7xl">
+=======
+            <section className="bg-white px-4 py-14 md:px-16">
+                <div className="mx-auto max-w-5xl">
+>>>>>>> 6fdf4a32bca2b5dc4c6c63967a8e8a33587ff3fa
                     <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
                     <p className="mb-6 text-sm text-slate-600">
                         Choose the option that best fits your needs.
@@ -240,7 +248,6 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     );
 }

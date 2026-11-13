@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import ConversationForm from "./conversation-form";
 
 const steps = [
@@ -96,7 +95,6 @@ export default async function StartAConversation({
                     &larr; Back to Partners & Sponsors
                 </Link>
             </section>
-            <Footer />
         </div>
     );
 }

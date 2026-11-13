@@ -12,7 +12,7 @@ const quickLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
-    { href: "/progress", label: "Progress" },
+    { href: "/news", label: "News" },
     { href: "/ways-to-help", label: "Ways to Help" },
     { href: "/contact", label: "Contact" },
 ];
@@ -57,87 +57,145 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="border-t border-slate-200 bg-white px-8 py-12 text-slate-900 md:px-16">
-            <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.3fr_1.2fr_0.8fr_1.2fr]">
-                {/* About */}
-                <div>
-                    <Image
-                        src="/about-leadership/valanthropy-lgo.png"
-                        alt="VAlanthropy"
-                        width={707}
-                        height={194}
-                        className="mb-6 h-14 w-auto"
-                    />
-                    <p className="max-w-xs text-sm text-slate-600">
-                        VAlanthropy is a registered 501(c)(3) nonprofit developing permanent
-                        affordable veteran housing communities that promote healing, stability,
-                        independence, and long-term success.
-                    </p>
-                    <p className="mt-2 text-sm font-bold text-slate-700">EIN: 88-0840494</p>
-                    <p className="text-sm text-slate-600">
-                        Donations are tax-deductible to the fullest extent allowed by law.
-                    </p>
-                    <div className="mt-4 flex gap-3">
-                        {socials.map((s) => (
-                            <a
-                                key={s.label}
-                                href={s.href}
-                                aria-label={s.label}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex h-8 w-8 items-center justify-center rounded bg-blue-900 text-white transition hover:bg-red-700"
-                            >
-                                {s.icon}
-                            </a>
-                        ))}
+        <footer className="border-t-4 border-[#c8202c] bg-[#0b2133] font-sans text-white">
+            <div className="mx-auto max-w-6xl px-6 py-12 md:px-16">
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                    {/* Organization information */}
+                    <div>
+                        <h2 className="text-2xl font-bold">VAlanthropy</h2>
+
+                        <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#ff939b]">
+                            Building hope. One home at a time.
+                        </p>
+
+                        <p className="mt-5 text-sm leading-relaxed text-slate-300">
+                            Developing permanent, affordable veteran housing communities
+                            that promote healing, stability, independence, and long-term
+                            success.
+                        </p>
+
+                        <p className="mt-4 text-sm text-slate-300">
+                            Registered 501(c)(3) nonprofit
+                        </p>
+
+                        <p className="mt-2 text-sm font-semibold">
+                            EIN: 88-0840494
+                        </p>
+                    </div>
+
+                    {/* Navigation placeholders */}
+                    <nav aria-labelledby="footer-explore">
+                        <h2
+                            id="footer-explore"
+                            className="text-lg font-bold"
+                        >
+                            Quick Links
+                        </h2>
+
+                        {/* Enable these buttons when destinations are available. */}
+                        <ul className="mt-5 space-y-3 text-sm text-slate-300">
+                            {quickLinks.map((link) => (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Resource placeholders */}
+                    <div>
+                        <h2 className="text-lg font-bold">
+                            Veteran Resources
+                        </h2>
+
+                        {/* Add confirmed resource links before enabling these. */}
+                        <ul className="mt-5 space-y-3 text-sm text-slate-300">
+                            <li>
+                                <button type="button" disabled>
+                                    Resource Center
+                                </button>
+                            </li>
+
+                            <li>
+                                <button type="button" disabled>
+                                    Policies
+                                </button>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/about-leadership"
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
+                                    Leadership &amp; Current Board
+                                </Link>
+                            </li>
+                            <li>
+                                <a
+                                    href={veteranServices[0].href}
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
+                                    Veterans Crisis Line
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contact information */}
+                    <div>
+                        <h2 className="text-lg font-bold">
+                            Get in Touch
+                        </h2>
+
+                        <address className="mt-5 space-y-5 text-sm not-italic leading-relaxed text-slate-300">
+                            <div>
+                                <p className="font-semibold text-white">
+                                    Mailing Address
+                                </p>
+
+                                <p>VAlanthropy</p>
+                                <p>P.O. Box 5230</p>
+                                <p>Columbia, SC 29250</p>
+                            </div>
+
+                            <div>
+                                <p className="font-semibold text-white">
+                                    Project Location
+                                </p>
+
+                                <p>Hidden Wounds Village – Alpha</p>
+                                <p>22 S. Washington St.</p>
+                                <p>Sumter, SC 29150</p>
+                            </div>
+
+                            <div className="space-y-2">
+                                <a
+                                    href="mailto:info@valanthropy.org"
+                                    className="block break-words hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
+                                    info@valanthropy.org
+                                </a>
+
+                                <a
+                                    href="tel:+18337258388"
+                                    className="block hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
+                                    1-833 SALUTEU [725-8388]
+                                </a>
+                            </div>
+                        </address>
                     </div>
                 </div>
 
-                {/* Veteran Services */}
-                <div>
-                    <h3 className="mb-3 text-lg font-bold text-blue-900">Veteran Services</h3>
-                    <ul className="space-y-2 text-sm font-medium text-blue-900">
-                        {veteranServices.map((l) => (
-                            <li key={l.label}>
-                                <Link href={l.href}>{l.label}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="mt-6 space-y-2 text-sm text-slate-700">
-                        <p>Veterans Crisis Line Call 988, then press 1.</p>
-                        <p>Text 838255.</p>
-                        <p>Online chat is available through VeteransCrisisLine.net</p>
-                    </div>
-                </div>
-
-                {/* Quick Links */}
-                <div>
-                    <h3 className="mb-3 text-lg font-bold text-blue-900">Quick Links</h3>
-                    <ul className="space-y-3 text-sm font-medium text-blue-900">
-                        {quickLinks.map((l) => (
-                            <li key={l.label}>
-                                <Link href={l.href}>{l.label}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Get In Touch */}
-                <div className="text-sm text-slate-700">
-                    <h3 className="mb-3 text-lg font-bold text-blue-900">Get In Touch</h3>
-                    <p className="font-bold text-slate-900">Mailing Address:</p>
-                    <p>VAlanthropy</p>
-                    <p>P.O. Box 5230</p>
-                    <p className="mb-4">Columbia, SC 29250</p>
-                    <p className="font-bold text-slate-900">Current Progress Address:</p>
-                    <p>Hidden Wounds Village – Alpha</p>
-                    <p>22 S. Washington St.</p>
-                    <p>Sumter, SC 29150</p>
-                    <p>
-                        <a href="mailto:info@valanthropy.org">info@valanthropy.org</a>
-                    </p>
-                    <p>
-                        <a href="tel:+18337258388">1-833 SALUTEU [725-8388]</a>
+                {/* Copyright */}
+                <div className="mt-10 border-t border-white/20 pt-6">
+                    <p className="text-sm text-slate-300">
+                        © {new Date().getFullYear()} VAlanthropy. All rights reserved.
                     </p>
                 </div>
             </div>
