@@ -52,10 +52,10 @@ export default function About() {
             <section className={white_background}>
                 <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
                     <div>
-                        <h2 className="mb-3 text-2xl font-bold">Our mission</h2>
-                        <p className="text-sm text-slate-600 ">
-                            Write your mission statement here. Explain who VAlanthropy is, why it
-                            was founded, and who it serves.
+                        <h2 className="mb-3 text-2xl font-bold">Our Mission</h2>
+                        <p className="text-base leading-relaxed text-slate-600 md:text-sm">
+                            VAlanthropy develops affordable veteran housing communities that create
+                            pathways to stability, independence, and long-term success.
                         </p>
                     </div>
                     <ul className="space-y-3 text-sm font-semibold">
@@ -76,10 +76,14 @@ export default function About() {
             {/* Story */}
             <section className="px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-2 text-2xl font-bold">Our story</h2>
-                    <p className="max-w-md text-sm text-slate-600 ">
-                        Write a short history of the organization here: how it started, what has
-                        been accomplished, and where it is headed.
+                    <h2 className="mb-2 text-2xl font-bold">Our Story</h2>
+                    <p className="max-w-3xl text-base leading-relaxed text-slate-600 md:text-sm">
+                        VAlanthropy is a South Carolina nonprofit built around the belief that stable
+                        housing gives veterans a foundation for rebuilding their lives. Its flagship
+                        project, Hidden Wounds Village Alpha in Sumter, aims to provide permanent,
+                        affordable housing alongside connections to community support. Beyond this
+                        first development, VAlanthropy hopes to create a housing model that other
+                        communities can adopt to help veterans achieve lasting independence.
                     </p>
                 </div>
             </section>
