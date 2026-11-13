@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import { slotText } from "@/lib/wp-text";
+import { slotTextClient } from "@/lib/wp-text-client";
 
-// Text wrapped in <T> can be edited in the WordPress page "financials-new".
-const T = slotText("financials-new");
+// Text wrapped in <T> can be edited in the WordPress page "financials-new" (the server page passes it in).
+const T = slotTextClient();
 
 // Add an `href` (e.g. "/financials/form-990-2025.pdf" in /public) once a document is approved for release.
 type Doc = { label: string; href?: string };

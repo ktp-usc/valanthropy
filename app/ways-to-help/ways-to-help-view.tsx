@@ -2,11 +2,10 @@
 
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
-import { slotText } from "@/lib/wp-text";
+import { slotTextClient } from "@/lib/wp-text-client";
 
-// Text wrapped in <T> can be edited in the WordPress page "ways-to-help-new".
-const T = slotText("ways-to-help-new");
+// Text wrapped in <T> can be edited in the WordPress page "ways-to-help-new" (the server page passes it in).
+const T = slotTextClient();
 
 // Layout
 const PAGE = "min-h-screen bg-white text-slate-900";
@@ -333,8 +332,6 @@ export default function WaysToHelp() {
                     </T></p>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 }

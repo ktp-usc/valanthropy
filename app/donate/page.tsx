@@ -12,7 +12,6 @@ import {
   MapPin,
 } from "lucide-react";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import villageImage from "./Hidden_Wounds_Village.png";
 import villageHouseImage from "./Hidden_Wounds_Village_house.png";
 import { slotText } from "@/lib/wp-text";
@@ -401,8 +400,6 @@ export default function DonatePage() {
         </section>
 
       </main>
-
-      <Footer />
     </div>
   );
 }

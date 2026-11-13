@@ -1,4 +1,4 @@
-﻿import { loadSlotNodes } from "@/lib/wp-text";
+import { loadSlotNodes } from "@/lib/wp-text";
 import { SlotsProvider } from "@/lib/wp-text-client";
 import View from "./financials-view";
 

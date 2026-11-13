@@ -11,8 +11,9 @@
 //   npm run wp:text                               writes to WordPress
 //   npm run wp:text -- contact home               only these pages (names: see PAGES below)
 //
-// Safe to re-run: the page is read through the site, which already shows the WordPress edits, so edits
-// that editors made are carried over. A backup of the existing WordPress page goes to backups/ first.
+// Safe to re-run, and it NEVER overwrites an editor's wording: blocks already on the WordPress page are left
+// exactly as they are. It only adds blocks for text that has none yet (new wording added in code). Text this
+// script can't see (e.g. inside pop-ups) is never removed. A backup of the page goes to backups/ before any write.
 // Only the slugs in PAGES can be written; live pages are never touched. New pages are created PRIVATE.
 
 import { mkdir, writeFile } from "node:fs/promises";
@@ -83,64 +84,116 @@ function cleanHtml(node) {
 
 const block = (name, attrs, html) => `<!-- wp:${name}${attrs ? " " + JSON.stringify(attrs) : ""} -->\n${html}\n<!-- /wp:${name} -->`;
 
-function buildBlocks(html) {
-    const root = parse(html);
+const NOTE = block(
+    "paragraph",
+    null,
+    "<p><em>Edit the wording in the blocks below (they follow the order of the page). Layout, colours and images are controlled by the website. Please don't delete a block unless you want its default wording back.</em></p>",
+);
+
+// One entry per piece of editable text found on the rendered page: { id, markup }, in page order.
+function slotsOf(html) {
     const seen = new Set();
-    const blocks = [];
-    for (const el of root.querySelectorAll("[data-wp-slot]")) {
+    const slots = [];
+    for (const el of parse(html).querySelectorAll("[data-wp-slot]")) {
         const id = el.getAttribute("data-wp-slot");
         if (!id || seen.has(id)) continue;
         const text = el.childNodes.map(cleanHtml).join("").trim();
         if (!text) continue;
         seen.add(id);
-        const parentTag = el.parentNode?.tagName?.toLowerCase() ?? "";
-        const level = /^h([1-6])$/.exec(parentTag)?.[1];
-        blocks.push(
-            level
+        const level = /^h([1-6])$/.exec(el.parentNode?.tagName?.toLowerCase() ?? "")?.[1];
+        slots.push({
+            id,
+            markup: level
                 ? block("heading", Number(level) === 2 ? null : { level: Number(level) }, `<h${level} class="wp-block-heading" id="${id}">${text}</h${level}>`)
                 : block("paragraph", null, `<p id="${id}">${text}</p>`),
-        );
+        });
     }
-    const note = block(
-        "paragraph",
-        null,
-        "<p><em>Edit the wording in the blocks below (they follow the order of the page). Layout, colours and images are controlled by the website. Please don't delete a block unless you want its default wording back.</em></p>",
-    );
-    return { count: blocks.length, content: [note, ...blocks].join("\n\n") };
+    return slots;
+}
+
+// The blocks already on the WordPress page (top level), each with the slot id it carries (if any).
+function existingBlocks(raw) {
+    const blocks = [];
+    const re = /<!-- wp:([a-z0-9/-]+)(?: \{[^\n]*?\})? -->[\s\S]*?<!-- \/wp:\1 -->/g;
+    for (const m of raw.matchAll(re)) blocks.push({ id: /\sid="(t-[^"]+)"/.exec(m[0])?.[1] ?? null, markup: m[0] });
+    return blocks;
+}
+
+/*
+ * NEVER rewrites or removes a block that is already on the WordPress page, so an editor's wording is safe
+ * (even if the site was showing fallback wording, and even for text this script can't see, such as text
+ * inside pop-ups). It only adds blocks for text that has no block yet, placed after the block of the text
+ * that comes before it on the page. A stale "frozen design" copy (old push script) is replaced instead.
+ */
+function merge(rawExisting, slots) {
+    let blocks = existingBlocks(rawExisting ?? "");
+    const hasSlots = blocks.some((b) => b.id);
+    if (!hasSlots) blocks = [{ id: null, markup: NOTE }]; // new page, or old frozen copy
+    const have = new Set(blocks.map((b) => b.id).filter(Boolean));
+    const added = [];
+    let prev = null;
+    for (const slot of slots) {
+        if (!have.has(slot.id)) {
+            const at = prev ? blocks.findIndex((b) => b.id === prev) + 1 : 1;
+            blocks.splice(at, 0, { id: slot.id, markup: slot.markup });
+            have.add(slot.id);
+            added.push(slot.id);
+        }
+        prev = slot.id;
+    }
+    return { content: blocks.map((b) => b.markup).join("\n\n"), added: added.length, total: have.size, replacedCopy: !hasSlots && Boolean(rawExisting?.trim()) };
 }
 
 /* ---------- run ---------- */
 
-console.log(apply ? "WRITING to WordPress\n" : "PREVIEW (nothing is written)\n");
+console.log(apply ? "WRITING to WordPress (adds missing blocks only; existing blocks are never changed)\n" : "PREVIEW (nothing is written)\n");
 let failed = false;
 for (const name of names) {
     const { route, slug, title } = PAGES[name];
     try {
         const res = await fetch(LOCAL + route);
         if (!res.ok) throw new Error(`${LOCAL}${route} returned ${res.status}. Is "npm run dev" running?`);
-        const { count, content } = buildBlocks(await res.text());
-        if (count === 0) throw new Error("no editable text found on the page");
+        const slots = slotsOf(await res.text());
+        if (slots.length === 0) throw new Error("no editable text found on the page");
+
+        const canRead = Boolean(WP_USER && WP_APP_PASSWORD);
+        const found = canRead ? (await api(`/pages?slug=${slug}&status=publish,draft,private&context=edit`))?.[0] : undefined;
+        if (found && found.slug !== slug) throw new Error(`unexpected page returned for slug "${slug}"`);
+        const { content, added, total, replacedCopy } = merge(found?.content?.raw, slots);
+
+        const summary = found
+            ? added === 0
+                ? "already up to date, nothing to write"
+                : replacedCopy
+                  ? `old design copy replaced by ${total} editable blocks`
+                  : `${added} new block(s) added (${total} total)`
+            : `new page with ${total} editable blocks`;
 
         if (!apply) {
-            console.log(`${name}: ${route} -> ${slug}: ${count} editable blocks (preview)\n`);
+            console.log(`${name}: ${route} -> ${slug}: ${summary} (preview)`);
             continue;
         }
-
-        const found = (await api(`/pages?slug=${slug}&status=publish,draft,private&context=edit`))?.[0];
-        if (found && found.slug !== slug) throw new Error(`unexpected page returned for slug "${slug}"`);
-
+        if (found && added === 0) {
+            console.log(`${name}: ${route} -> ${slug}: ${summary}`);
+            continue;
+        }
         if (found) {
             await mkdir("backups", { recursive: true });
             await writeFile(`backups/${slug}-${new Date().toISOString().replace(/[:.]/g, "-")}.html`, found.content?.raw ?? "", "utf8");
             await api(`/pages/${found.id}?context=edit`, { method: "POST", body: JSON.stringify({ content }) });
-            console.log(`${name}: ${route} -> ${slug}: updated id ${found.id} (${found.status}), ${count} editable blocks`);
+            console.log(`${name}: ${route} -> ${slug}: updated id ${found.id} (${found.status}); ${summary}`);
         } else {
             const page = await api(`/pages?context=edit`, { method: "POST", body: JSON.stringify({ title, slug, status: "private", content }) });
-            console.log(`${name}: ${route} -> ${slug}: CREATED private page id ${page.id}, ${count} editable blocks`);
+            console.log(`${name}: ${route} -> ${slug}: CREATED private page id ${page.id}; ${summary}`);
         }
     } catch (error) {
         failed = true;
         console.error(`${name}: FAILED - ${error.message}`);
+        // A rejected login means every other page would fail too; stop instead of retrying (avoids account lockout).
+        if (/^(401|403)\b|incorrect_password|invalid_username|invalid_email/.test(error.message)) {
+            console.error("Login was rejected. Stopping so the account isn't locked. Check WP_USER / WP_APP_PASSWORD.");
+            break;
+        }
     }
 }
 process.exit(failed ? 1 : 0);

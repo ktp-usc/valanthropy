@@ -37,12 +37,15 @@ When the user types exactly `UPDATE WORDPRESS PAGES` (all caps), refresh the Wor
    `npm run dev` in the background and wait until it responds.
 2. Run `npm run wp:text` (preview without writing: `npm run wp:text:preview`; only some pages:
    `npm run wp:text -- contact home`; names: home, contact, projects, ways, partners, financials, donate,
-   news, conversation). About and Leadership use `scripts/create-wp-content-pages.mjs` (`--apply --overwrite`).
+   news, conversation). About and Leadership use `scripts/create-wp-content-pages.mjs`; its `--overwrite` flag
+   replaces a page's text with the local file and discards the client's edits, so only use it for a deliberate
+   restore, with the user's explicit OK.
 3. Report, per page: created / updated / failed, and the number of editable blocks.
 
 DO NOT run `npm run wp:push` (`scripts/push-design-to-wordpress.mjs`) on these pages any more. It is the old
-"frozen copy of the design" mirror and would overwrite the editable blocks. Re-running `wp:text` is safe: it reads
-the page through the site, which already shows the editors' wording, so their edits are carried over.
+"frozen copy of the design" mirror and would overwrite the editable blocks. Re-running `wp:text` is safe: it only
+adds blocks for wording that has none yet and never changes or removes an existing block, so the client's edits are
+kept. Text inside pop-ups (Radix Dialog portals) is not in the server HTML, so it can't get a block automatically.
 
 Rules:
 - Only the `-new` pages in the table may be written. The live pages on valanthropy.org (`home`, `about`,
