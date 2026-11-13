@@ -32,10 +32,7 @@ const options = [
 ];
 
 const optionButtonClass =
-    "inline-flex h-20 w-full items-center justify-center rounded bg-red-700 px-4 text-center text-base font-semibold text-white md:w-60";
-=======
     "inline-flex h-20 w-full max-w-full items-center justify-center rounded bg-red-700 px-4 text-center text-base font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 md:w-60";
- main
 
 export default function Contact() {
     return (
@@ -59,9 +56,6 @@ export default function Contact() {
             </section>
 
             {/* Contact options */}
-            <section className="bg-white px-4 py-14 md:px-16">
-                <div className="mx-auto max-w-5xl">
-                    <h2 className="mb-2 text-2xl font-bold text-red-700">Contact Options</h2>
             <section className="bg-white px-4 py-10 sm:px-8 sm:py-12 md:px-16 md:py-14">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="mb-2 text-2xl font-bold text-red-700">
