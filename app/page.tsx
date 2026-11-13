@@ -2,50 +2,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Header from "@/components/header";
+import { slotText } from "@/lib/wp-text";
+
+// Text wrapped in <T> is editable through WordPress.
+const T = slotText("home-new");
 
 // Layout
 const PAGE = "bg-white text-slate-900";
 const CONTAINER = "mx-auto max-w-5xl";
-
-const LIGHT_SECTION =
-    "bg-white px-8 py-14 md:px-16";
-
+const LIGHT_SECTION = "bg-white px-8 py-14 md:px-16";
 const DARK_SECTION =
     "bg-blue-900 px-8 py-14 text-white md:px-16";
-
 const TWO_COLUMNS =
     "grid items-start gap-8 md:grid-cols-2 md:gap-16";
 
 // Typography
 const HERO_LABEL =
     "mb-4 text-[16px] uppercase tracking-wide text-red-400";
-
 const LABEL =
     "mb-4 text-[16px] uppercase tracking-wide text-red-700";
-
-const SECTION_TITLE =
-    "mb-6 text-2xl font-bold";
-
-const BODY =
-    "text-sm leading-7 text-slate-600";
-
-const DARK_BODY =
-    "text-sm leading-7 text-white/85";
+const SECTION_TITLE = "mb-6 text-2xl font-bold";
+const BODY = "text-sm leading-7 text-slate-600";
+const DARK_BODY = "text-sm leading-7 text-white/85";
 
 // Links and buttons
 const PRIMARY_BUTTON =
     "inline-flex min-h-12 items-center justify-center gap-3 rounded bg-red-700 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-400 motion-reduce:transition-none";
-
 const LIGHT_LINK =
     "inline-flex min-h-12 items-center gap-2 py-2 text-sm font-semibold text-white underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
-
 const RED_LINK =
     "mt-6 inline-flex items-center gap-2 py-2 text-sm font-semibold text-red-700 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-700";
-
 const SCROLL_LINK =
     "mt-12 inline-flex min-h-12 items-center gap-3 border-t border-white/30 pt-6 text-sm text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none";
 
-// Ways to help
 type HelpOption = {
     title: string;
     description: string;
@@ -73,24 +62,15 @@ const HELP_OPTIONS: HelpOption[] = [
     },
 ];
 
-const HELP_LIST =
-    "grid gap-8 sm:grid-cols-2 md:grid-cols-3";
-
-const HELP_ITEM =
-    "border-t border-slate-200 pt-6";
-
-const HELP_TITLE =
-    "mb-3 font-bold";
-
+const HELP_LIST = "grid gap-8 sm:grid-cols-2 md:grid-cols-3";
+const HELP_ITEM = "border-t border-slate-200 pt-6";
+const HELP_TITLE = "mb-3 font-bold";
 const HELP_LINK =
     "mt-5 inline-flex items-center gap-2 py-2 text-sm font-semibold text-red-700 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-700";
 
-// Project image
 const PROJECT_IMAGE =
     "relative aspect-[4/3] overflow-hidden rounded bg-slate-200";
-
-const CAPTION =
-    "mt-3 text-sm leading-6 text-slate-600";
+const CAPTION = "mt-3 text-sm leading-6 text-slate-600";
 
 export default function Home() {
     return (
@@ -118,7 +98,7 @@ export default function Home() {
                         />
                     </div>
 
-                    {/* Fade the artwork into the navy background */}
+                    {/* Fade artwork into the navy background */}
                     <div
                         className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-slate-900 via-slate-900/90 to-slate-900/25"
                         aria-hidden="true"
@@ -127,22 +107,26 @@ export default function Home() {
                     <div className="mx-auto w-full max-w-6xl">
                         <div className="max-w-xl">
                             <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-red-300">
-                                VAlanthropy · South Carolina
+                                <T>VAlanthropy · South Carolina</T>
                             </p>
 
                             <h1
                                 id="home-title"
                                 className="font-heading text-4xl font-normal leading-tight tracking-tight text-white md:text-5xl"
                             >
-                                Permanent housing.
-                                <br />
-                                A stronger foundation for veterans.
+                                <T>
+                                    Permanent housing.
+                                    <br />
+                                    A stronger foundation for veterans.
+                                </T>
                             </h1>
 
                             <p className="mt-6 max-w-prose text-base leading-7 text-slate-200 md:text-lg md:leading-8">
-                                VAlanthropy develops affordable veteran housing
-                                communities that create pathways to stability,
-                                independence, and long-term success.
+                                <T>
+                                    VAlanthropy develops affordable veteran housing
+                                    communities that create pathways to stability,
+                                    independence, and long-term success.
+                                </T>
                             </p>
 
                             <div className="mt-8 flex flex-wrap items-center gap-6">
@@ -190,24 +174,26 @@ export default function Home() {
                         <div className={TWO_COLUMNS}>
                             <div>
                                 <p className={LABEL}>
-                                    What we do
+                                    <T>What we do</T>
                                 </p>
 
                                 <h2
                                     id="work-title"
                                     className={SECTION_TITLE}
                                 >
-                                    Building places to call home.
+                                    <T>Building places to call home.</T>
                                 </h2>
                             </div>
 
                             <div>
                                 <p className={BODY}>
-                                    Our work focuses on developing permanent,
-                                    affordable housing for veterans in South
-                                    Carolina. That includes the infrastructure,
-                                    construction, furnishings, and long-term
-                                    sustainability behind each housing community.
+                                    <T>
+                                        Our work focuses on developing permanent,
+                                        affordable housing for veterans in South
+                                        Carolina. That includes the infrastructure,
+                                        construction, furnishings, and long-term
+                                        sustainability behind each housing community.
+                                    </T>
                                 </p>
 
                                 <Link
@@ -234,23 +220,27 @@ export default function Home() {
                         <div className={TWO_COLUMNS}>
                             <div>
                                 <p className={HERO_LABEL}>
-                                    Who it’s for
+                                    <T>Who it’s for</T>
                                 </p>
 
                                 <h2
                                     id="veterans-title"
                                     className={SECTION_TITLE}
                                 >
-                                    Veterans who need a stable place to rebuild.
+                                    <T>
+                                        Veterans who need a stable place to rebuild.
+                                    </T>
                                 </h2>
                             </div>
 
                             <p className={DARK_BODY}>
-                                A secure home provides a foundation for health,
-                                employment, and connection. We focus on veterans
-                                who need permanent, affordable housing and a
-                                supportive community as they work toward
-                                long-term independence.
+                                <T>
+                                    A secure home provides a foundation for health,
+                                    employment, and connection. We focus on veterans
+                                    who need permanent, affordable housing and a
+                                    supportive community as they work toward
+                                    long-term independence.
+                                </T>
                             </p>
                         </div>
                     </div>
@@ -263,14 +253,14 @@ export default function Home() {
                 >
                     <div className={CONTAINER}>
                         <p className={LABEL}>
-                            How to help
+                            <T>How to help</T>
                         </p>
 
                         <h2
                             id="help-title"
                             className={SECTION_TITLE}
                         >
-                            Find your way to be part of the work.
+                            <T>Find your way to be part of the work.</T>
                         </h2>
 
                         <ul className={HELP_LIST}>
@@ -280,11 +270,11 @@ export default function Home() {
                                     className={HELP_ITEM}
                                 >
                                     <h3 className={HELP_TITLE}>
-                                        {option.title}
+                                        <T>{option.title}</T>
                                     </h3>
 
                                     <p className={BODY}>
-                                        {option.description}
+                                        <T>{option.description}</T>
                                     </p>
 
                                     <Link
@@ -325,28 +315,32 @@ export default function Home() {
                                 </div>
 
                                 <figcaption className={CAPTION}>
-                                    Hidden Wounds Village Alpha · Sumter,
-                                    South Carolina
+                                    <T>
+                                        Hidden Wounds Village Alpha · Sumter,
+                                        South Carolina
+                                    </T>
                                 </figcaption>
                             </figure>
 
                             <div>
                                 <p className={LABEL}>
-                                    Our work in action
+                                    <T>Our work in action</T>
                                 </p>
 
                                 <h2
                                     id="project-title"
                                     className={SECTION_TITLE}
                                 >
-                                    Hidden Wounds Village Alpha
+                                    <T>Hidden Wounds Village Alpha</T>
                                 </h2>
 
                                 <p className={BODY}>
-                                    Our flagship housing initiative in Sumter
-                                    puts this mission into practice: permanent,
-                                    affordable housing and a supportive community
-                                    for veterans.
+                                    <T>
+                                        Our flagship housing initiative in Sumter
+                                        puts this mission into practice: permanent,
+                                        affordable housing and a supportive community
+                                        for veterans.
+                                    </T>
                                 </p>
 
                                 <Link

@@ -17,11 +17,11 @@ const links: NavItem[] = [
         label: "About",
         children: [
             {
-                href: "/about-leadership",
+                href: "/leadership",
                 label: "Leadership & Current Board",
             },
             {
-                href: "/partners-and-sponsors",
+                href: "/become-a-partner",
                 label: "Partners & Sponsors",
             },
             {

@@ -1,6 +1,6 @@
 # Valanthropy Style Guide
 
-This guide is based on [app/about-leadership/page.tsx](app/about-leadership/page.tsx). New pages should follow these patterns so the site looks the same everywhere.
+This guide is based on [app/leadership/page.tsx](app/leadership/page.tsx). New pages should follow these patterns so the site looks the same everywhere.
 
 All styling uses Tailwind CSS utility classes. Don't add custom CSS unless Tailwind can't do what you need.
 

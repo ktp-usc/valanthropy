@@ -5,7 +5,7 @@ const veteranServices = [
     { href: "https://www.veteranscrisisline.net/", label: "Veteran Crisis Line" },
     { href: "https://hiddenwounds.org/", label: "Resource Center" },
     { href: "/financials", label: "Policies" },
-    { href: "/about-leadership", label: "Leadership & Current Board" },
+    { href: "/leadership", label: "Leadership & Current Board" },
 ];
 
 const quickLinks = [
