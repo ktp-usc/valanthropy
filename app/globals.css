@@ -164,3 +164,20 @@
         font-family: var(--font-open-sans), Arial, sans-serif !important;
     }
 }
+
+/* Blend the homepage background image into the navy */
+section[aria-labelledby="home-title"] > div[aria-hidden="true"]:first-child {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 20%,
+        #000 65%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 20%,
+        #000 65%
+    );
+}
