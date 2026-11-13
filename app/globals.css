@@ -152,7 +152,7 @@
         @apply bg-background font-sans text-foreground;
     }
     /* Consistent headings, overriding existing bold utilities */
-    h1, 
+    h1,
     h2 {
         font-family: var(--font-noto-serif), Georgia, serif !important;
         font-weight: 400 !important;
@@ -163,4 +163,21 @@
     p {
         font-family: var(--font-open-sans), Arial, sans-serif !important;
     }
+}
+
+/* Blend the homepage background image into the navy */
+section[aria-labelledby="home-title"] > div[aria-hidden="true"]:first-child {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 20%,
+        #000 65%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 20%,
+        #000 65%
+    );
 }
