@@ -98,7 +98,7 @@ export default function About() {
                                 <h3 className="mb-1 text-xs font-semibold text-red-400">
                                     {v.title}
                                 </h3>
-                                <p className="text-sm md:text-xs">{v.desc}</p>
+                                <p className="text-sm ">{v.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -108,7 +108,7 @@ export default function About() {
             {/* CTA */}
             <section className="bg-white px-4 py-10 text-center sm:px-8 sm:py-12 md:py-16">
                 <h2 className="mb-2 text-2xl font-bold">Be part of what comes next.</h2>
-                <p className="mb-6 text-sm text-slate-600 md:text-xs">
+                <p className="mb-6 text-sm text-slate-600 ">
                     Your donation, sponsorship, or shared connection helps move the village
                     forward.
                 </p>
