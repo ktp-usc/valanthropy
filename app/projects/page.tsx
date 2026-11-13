@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/header";
 import ProjectProgress from "@/components/project-progress";
-
+import Image from "next/image";
 export const metadata: Metadata = {
     title: "Projects | VAlanthropy",
     description:
@@ -40,18 +40,6 @@ const BENEFIT_DOT = "mt-1 h-3 w-3 shrink-0 rounded-full bg-red-700";
 // Illustration
 const ILLUSTRATION =
     "relative aspect-[1.4] w-full overflow-hidden rounded bg-slate-200 sm:aspect-[1.63]";
-const ILLUSTRATION_LABEL =
-    "absolute inset-x-4 top-4 text-[10px] uppercase text-slate-900 sm:inset-x-6 sm:top-6 sm:text-xs";
-const ILLUSTRATION_CIRCLE =
-    "absolute right-[12%] top-[22%] aspect-square w-[17%] rounded-full bg-red-700 sm:top-[18%]";
-const ILLUSTRATION_GROUND =
-    "absolute bottom-0 h-8 w-full bg-slate-900/50";
-const ILLUSTRATION_BASE =
-    "absolute bottom-4 left-[6%] h-8 w-[85%] bg-slate-900/70";
-const ILLUSTRATION_MIDDLE =
-    "absolute bottom-8 left-[12%] h-8 w-[69%] bg-slate-900/70";
-const ILLUSTRATION_TOP =
-    "absolute bottom-12 left-[18%] h-8 w-[50%] bg-slate-900/70";
 
 // Support
 const SUPPORT_CONTENT = "mx-auto max-w-5xl text-center";
@@ -122,16 +110,15 @@ export default function ProjectsPage() {
                                 </Link>
                             </div>
 
-                            {/* Decorative project illustration */}
-                            <div aria-hidden="true" className={ILLUSTRATION}>
-                                <p className={ILLUSTRATION_LABEL}>
-                                    Village Alpha project rendering
-                                </p>
-                                <div className={ILLUSTRATION_CIRCLE} />
-                                <div className={ILLUSTRATION_GROUND} />
-                                <div className={ILLUSTRATION_BASE} />
-                                <div className={ILLUSTRATION_MIDDLE} />
-                                <div className={ILLUSTRATION_TOP} />
+                            {/* Project rendering */}
+                            <div className={ILLUSTRATION}>
+                                <Image
+                                    src="/projects/hidden-wounds-village-alpha-valanthropy.png"
+                                    alt="Architectural rendering of Hidden Wounds Village Alpha showing homes and a landscaped entrance"
+                                    fill
+                                    sizes="(min-width: 1152px) 504px, (min-width: 768px) calc((100vw - 144px) / 2), calc(100vw - 64px)"
+                                    className="object-cover"
+                                />
                             </div>
                         </div>
                     </div>
