@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const veteranServices = [
-    { href: "https://www.veteranscrisisline.net", label: "Veteran Crisis Line" },
-    { href: "#", label: "Resource Center" },
-    { href: "#", label: "Policies" },
+    { href: "https://www.veteranscrisisline.net/", label: "Veteran Crisis Line" },
+    { href: "https://hiddenwounds.org/", label: "Resource Center" },
+    { href: "/financials", label: "Policies" },
     { href: "/about-leadership", label: "Leadership & Current Board" },
 ];
 
@@ -113,23 +113,30 @@ export default function Footer() {
                             Veteran Resources
                         </h2>
 
-                        {/* Add confirmed resource links before enabling these. */}
                         <ul className="mt-5 space-y-3 text-sm text-slate-300">
                             <li>
-                                <button type="button" disabled>
+                                <a
+                                    href={veteranServices[1].href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
                                     Resource Center
-                                </button>
-                            </li>
-
-                            <li>
-                                <button type="button" disabled>
-                                    Policies
-                                </button>
+                                </a>
                             </li>
 
                             <li>
                                 <Link
-                                    href="/about-leadership"
+                                    href={veteranServices[2].href}
+                                    className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                                >
+                                    Policies
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href={veteranServices[3].href}
                                     className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
                                     Leadership &amp; Current Board
@@ -138,6 +145,8 @@ export default function Footer() {
                             <li>
                                 <a
                                     href={veteranServices[0].href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                                 >
                                     Veterans Crisis Line

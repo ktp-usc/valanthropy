@@ -1,6 +1,6 @@
 "use client";
 
-const EMAIL = "info@valanthropy.org";
+const EMAIL = "Lilly@valanthropy.org";
 
 const contactMethods = ["Email", "Phone"];
 
