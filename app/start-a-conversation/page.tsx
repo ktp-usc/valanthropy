@@ -38,7 +38,7 @@ export default async function StartAConversation({
                     <p className="mb-4 text-[16px] uppercase tracking-wide text-red-500">
                         Partners & Sponsors
                     </p>
-                    <h1 className="text-4xl font-bold leading-tight">Start a Conversation</h1>
+                    <h1 className="text-4xl font-bold leading-tight">Become a Sponsor</h1>
                 </div>
             </section>
 

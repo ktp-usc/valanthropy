@@ -2,7 +2,6 @@
 
 import { Dialog } from "radix-ui";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 // Layout
 const PAGE = "min-h-screen bg-white text-slate-900";
@@ -329,8 +328,6 @@ export default function WaysToHelp() {
                     </p>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 }

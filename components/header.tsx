@@ -16,7 +16,6 @@ const links: NavItem[] = [
         href: "/about",
         label: "About",
         children: [
-            { href: "/about", label: "About Us" },
             {
                 href: "/about-leadership",
                 label: "Leadership & Current Board",
@@ -47,20 +46,14 @@ const links: NavItem[] = [
         label: "Ways to Help",
         children: [
             { href: "/donate", label: "Donate" },
-            { href: "/ways-to-help", label: "Sponsor or Partner" },
+            { href: "/ways-to-help", label: "Become a Partner" },
             { href: "/ways-to-help", label: "Volunteer" },
         ],
     },
     {
         href: "/contact",
         label: "Contact",
-        children: [
-            { href: "/contact", label: "Contact Us" },
-            {
-                href: "mailto:info@valanthropy.org",
-                label: "info@valanthropy.org",
-            },
-        ],
+        children: [],
     },
 ];
 
@@ -184,20 +177,22 @@ export default function Header({
                             {item.label}
                         </Link>
 
-                        <div className={DROPDOWN}>
-                            <ul className={DROPDOWN_LIST}>
-                                {item.children.map((child) => (
-                                    <li key={child.label}>
-                                        <Link
-                                            href={child.href}
-                                            className={DROPDOWN_LINK}
-                                        >
-                                            {child.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        {item.children.length > 0 && (
+                            <div className={DROPDOWN}>
+                                <ul className={DROPDOWN_LIST}>
+                                    {item.children.map((child) => (
+                                        <li key={child.label}>
+                                            <Link
+                                                href={child.href}
+                                                className={DROPDOWN_LINK}
+                                            >
+                                                {child.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 ))}
             </nav>
@@ -255,49 +250,53 @@ export default function Header({
                                         {item.label}
                                     </Link>
 
-                                    <button
-                                        type="button"
-                                        className={`${SUBMENU_BUTTON} ${FOCUS}`}
-                                        aria-label={`${
-                                            expanded ? "Collapse" : "Expand"
-                                        } ${item.label} links`}
-                                        aria-expanded={expanded}
-                                        aria-controls={submenuId}
-                                        onClick={() => {
-                                            setOpenSection(
-                                                expanded ? null : item.href
-                                            );
-                                        }}
-                                    >
-                                        <ChevronDown
-                                            size={20}
-                                            aria-hidden="true"
-                                            className={
-                                                expanded
-                                                    ? "rotate-180"
-                                                    : ""
-                                            }
-                                        />
-                                    </button>
+                                    {item.children.length > 0 && (
+                                        <button
+                                            type="button"
+                                            className={`${SUBMENU_BUTTON} ${FOCUS}`}
+                                            aria-label={`${
+                                                expanded ? "Collapse" : "Expand"
+                                            } ${item.label} links`}
+                                            aria-expanded={expanded}
+                                            aria-controls={submenuId}
+                                            onClick={() => {
+                                                setOpenSection(
+                                                    expanded ? null : item.href
+                                                );
+                                            }}
+                                        >
+                                            <ChevronDown
+                                                size={20}
+                                                aria-hidden="true"
+                                                className={
+                                                    expanded
+                                                        ? "rotate-180"
+                                                        : ""
+                                                }
+                                            />
+                                        </button>
+                                    )}
                                 </div>
 
-                                <ul
-                                    id={submenuId}
-                                    className={SUBMENU_LIST}
-                                    hidden={!expanded}
-                                >
-                                    {item.children.map((child) => (
-                                        <li key={child.label}>
-                                            <Link
-                                                href={child.href}
-                                                className={`${SUBMENU_LINK} ${FOCUS}`}
-                                                onClick={closeMenu}
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
+                                {item.children.length > 0 && (
+                                    <ul
+                                        id={submenuId}
+                                        className={SUBMENU_LIST}
+                                        hidden={!expanded}
+                                    >
+                                        {item.children.map((child) => (
+                                            <li key={child.label}>
+                                                <Link
+                                                    href={child.href}
+                                                    className={`${SUBMENU_LINK} ${FOCUS}`}
+                                                    onClick={closeMenu}
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
                         );
                     })}
