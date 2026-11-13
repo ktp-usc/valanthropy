@@ -51,6 +51,11 @@ const links: NavItem[] = [
         ],
     },
     {
+        href: "/news",
+        label: "News",
+        children: [],
+    },
+    {
         href: "/contact",
         label: "Contact",
         children: [],
